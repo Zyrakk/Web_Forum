@@ -1,28 +1,47 @@
+/*Elementos Principales*/
+
+.title { 
+    font-family: Arial Black; 
+    font-weight: bold; 
+    font-size: 30px; 
+    color: #fff; 
+    text-shadow: -2px 0 #0ef, 0 2px #0ef, 2px 0 #0ef, 0 -2px #0ef;
+}
+
+/*Caja Externa*/
+
 .content {
-    position: fixed;
+    position: absolute;
     margin-top: 10%;
+    margin-bottom: 10%;
     width: 50vw;
-    height: auto;
+    height: 65vh;
     border: 2px solid #0ef;
     box-shadow: 0 0 1.5em 0 #00a6bc;
     text-align: center;
+    overflow-y: scroll;
+    top: 0;
+    bottom: 0;
+    scrollbar-color: transparent transparent; /*Scrollbar en Firefox*/
 }
 
-.code_pre {
+/*Codigo*/
+
+.code_p {
     text-align: left;
 }
 
 .subtitle {
     color: grey;
-    align-self: center y;
 }
 
 code {
     display: inline-block;
-    width: 50%;
+    width: 70%;
     border: 2px solid rgb(5, 91, 97);
     background-color: black;
     padding: 1em;
+    text-align: left;
 }
 
 /*Colores*/
@@ -31,5 +50,10 @@ y {
     color: yellow;
 }
 
+m {
+    color: purple;
+}
 
-  
+b {
+    color: #0ef;
+}
