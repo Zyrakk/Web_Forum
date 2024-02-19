@@ -58,16 +58,42 @@
         <!--Bloque de Contenido 1-->
         <div class="content">
             <article>
-                <h3 class="subtitle_2">Dependencies</h3><br>
+                <h3 class="subtitle">Programs and dependencies</h3><br>
                 <pre>
                     <p class="code_p">
-                        <span class="subtitle"># - Update the system</span>
+                        <span class="comment"># - Update the system</span>
 
                         <code><y>sudo</y> apt update && <y>sudo</y> apt upgrade</code>
                     </p>
-                        <h3 class="subtitle_2">Programs and dependencies</h3>
+                        <h3 class="subtitle">Apache2 Web Server</h3>
                     <p class="code_p">
-                        <span class="subtitle"><b>Apache2 Web Server</b></span>
+                        <span class="comment"># Install and test Apache2</span>
+
+                        <code><y>sudo</y> apt install <z>apache2</z> <y>-y</y></code>
+
+                                    <span class="comment"># Get the hostname</span>
+
+                        <code>hostname <y>-I</y></code>
+
+                                    <span class="comment"># Test it in the web browser -> http://192.168.1.XXX/</span>
+
+
+                        <span class="comment"># Grant your user the permissions for apache2</span>
+
+                        <code><y>sudo</y> usermod <y>-a -G</y> www-data 'user'<br><y>sudo</y> chown <y>-R -f</y> www-data:www-data /var/www/html</code>
+
+                                    <span class="comment"># To apply the changes you need to log out and log in</span>
+
+
+                        <span class="comment"># Inside the directory /var/www/html you can put all the assets for your web page</span>
+                    </p>
+                        <h3 class="subtitle">PHP for Apache</h3>
+                    <p class="code_p">
+                        <span class="comment"># Installing dependencies</span>
+
+                        <code><y>sudo</y> apt install <m>php libapache2-mod-php php-mbstring php-mysql php-curl php-gd php-zip</m> <br><m>php-cgi php-json</m> <y>-y</y></code>
+
+                        <span class="comment"># Test if PHP is correctly installed</span>
                     </p>
                 </pre>
             </article>

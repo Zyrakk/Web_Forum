@@ -33,11 +33,11 @@
     text-align: left;
 }
 
-.subtitle {
+.comment {
     color: grey;
 }
 
-.subtitle_2 {
+.subtitle {
     color: black;
     text-shadow: -2px 0 white, 0 2px white, 2px 0 white, 0 -2px white;
 }
@@ -57,9 +57,17 @@ y {
 }
 
 m {
-    color: purple;
+    color: #7D2181;
+}
+
+c {
+    color: #0ef;
 }
 
 b {
     color: white;
+}
+
+z {
+    color: blue;
 }
