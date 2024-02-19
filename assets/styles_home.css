@@ -1,0 +1,35 @@
+.content {
+    position: fixed;
+    margin-top: 10%;
+    width: 50vw;
+    height: auto;
+    border: 2px solid #0ef;
+    box-shadow: 0 0 1.5em 0 #00a6bc;
+    text-align: center;
+}
+
+.code_pre {
+    text-align: left;
+}
+
+.subtitle {
+    color: grey;
+    align-self: center y;
+}
+
+code {
+    display: inline-block;
+    width: 50%;
+    border: 2px solid rgb(5, 91, 97);
+    background-color: black;
+    padding: 1em;
+}
+
+/*Colores*/
+
+y {
+    color: yellow;
+}
+
+
+  

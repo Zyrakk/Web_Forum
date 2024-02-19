@@ -1,0 +1,131 @@
+/*Formulario de Registro*/
+
+.wrapper{
+    position: fixed;
+    width: 50vw;
+    height: 65vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border: 0.2em solid #00ffff;
+    box-shadow: 0 0 1.5em 0 #00a6bc;
+    direction: rtl;
+    top: 20%;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    direction: ltr;
+}
+
+.title{
+    font-size: 2.3em;
+}
+
+.inp{
+    padding-bottom: 0.5em;
+    border-bottom: 0.1em solid #eee;
+}
+
+.input{
+    border: none;
+    outline: none;
+    background: none;
+    width: 14vw;
+    margin-top: 1.8em;
+    padding-right: 1em;
+    font-size: 1em;
+    color: #0ef;
+}
+
+.submit{
+    border: none;
+    outline: none;
+    width: 15vw;
+    margin-top: 1.8em;
+    padding: 0.5em 0;
+    font-size: 1.3em;
+    border-radius: 4em;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    background: linear-gradient(45deg, #0ef, #c800ff);
+}
+
+.footer{
+    margin-top: 2em;
+    letter-spacing: 0.03em;
+    font-size: 0.9em;
+}
+
+.link{
+    color: #0ef;
+    text-decoration: none;
+}
+
+.banner{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40%;
+    height: 100%;
+    background: linear-gradient(to right, #c800ff, #0ef);
+    clip-path: polygon(0 0, 100% 0, 40% 100%, 0% 100%);
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    padding-right: 10%;
+    padding-left: 10%;
+}
+
+.wel_text{
+    font-size: 2.5em;
+    line-height: 1.1em;
+    text-align: left;
+    margin-top: -1.1em;
+}
+
+.para{
+    margin-top: 0.5em;
+    font-size: 1.1em;
+    line-height: 1.3em;
+    letter-spacing: 0.05em;
+    direction: ltr;
+}
+
+/*Version Movil*/
+
+@media screen and (max-width: 768px) {
+    
+    .banner{visibility: hidden;}
+
+    .wrapper {
+        width: 80%;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        top: 15%;
+    }
+
+    .form {
+        display: block;
+        margin-top: 15%;
+        margin-bottom: 10%;
+        padding-left: 10%;
+        padding-right: 10%;
+    }
+
+    .input {
+        padding: 2%;
+        width: 80%;
+    }
+
+    .submit {
+        width: 80%;
+        margin-top: 20%;
+    }
+}

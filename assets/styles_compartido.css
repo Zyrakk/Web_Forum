@@ -1,0 +1,117 @@
+/*Base*/
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: arial;
+    color: #fff;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    background: #081b29;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+/*Menú Superior*/
+
+
+/*Version Escritorio*/
+
+.header2 {visibility: hidden;}
+
+.header1 {
+  width: 50vw;
+  position: fixed;
+  z-index: 1;
+  margin: 1em;
+  border: 0.2em solid #00ffff;
+  box-shadow: 0 0 1.5em 0 #00a6bc;
+}
+
+.nav1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.nav1 .top_menu {
+  list-style: none;
+  overflow: hidden;
+}
+
+.nav1 .top_menu li {
+  float: left;
+  font-family: Arial;
+  font-size: 1.3em;
+}
+
+.nav1 .top_menu li a {
+  display: block;
+  padding: 1em;
+  color: #fff;
+  text-decoration: none;
+}
+
+.nav1 ul li:hover {
+  background: linear-gradient(45deg, #0ef, #c800ff);
+}
+
+/*Version Movil*/
+
+@media screen and (max-width: 768px) {
+	
+    .header1 {visibility: hidden;}
+    .header2 {visibility: visible;}
+
+    .menu_but {
+      font-size: 2em;
+      cursor: pointer;
+    }
+
+    .sidenav {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 2;
+        top: 0;
+        left: 0;
+        background-color: black;
+        overflow-x: hidden;
+        padding-top: 20px;
+        transition: 0.5s;
+      }
+    
+      .sidenav a {
+        padding: 8px 8px 8px 32px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #818181;
+        display: block;
+        transition: 0.3s;
+      }
+    
+      .sidenav a:hover {
+        color: #f1f1f1;
+      }
+    
+      .sidenav .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+      }
+
+      #main {
+        position: absolute;
+        z-index: 2;
+        padding: 6%;
+        left: 0;
+        top: 0;
+      }
+
+}

@@ -1,0 +1,108 @@
+/*Base*/
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: arial;
+    color: #fff;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    background: #081b29;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+/*Boton Cerrar Sesion*/
+
+/*.logout {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.3em;
+    color: #ffffff;
+    background: #081b29;
+    border: 3px solid #00ffff;
+    padding: 10px;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.logout i {
+    padding-right: 5px;
+}*/
+
+/* ---------- Menu Desplegable ---------- */
+
+ul, li {
+    list-style:none;
+}
+
+/*Posicionar en la esquina*/
+
+.nav_user {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+/*Estilo del boton desplegable*/
+
+.perfil {
+    border: 3px solid #00ffff;
+    background: #081b29;
+    color: #ffffff;
+}
+
+.nav_user li:hover > ul {
+    display: block;
+}
+
+/*Ocultar y Mostrar el Desplegable*/
+
+.nav_user li ul {
+    display: none;
+}
+
+.nav_user li a {
+    display: block;
+}
+
+/*.nav > li {
+    float:left;
+}
+
+.nav li a {
+    background-color:#000;
+    color:#fff;
+    text-decoration:none;
+    padding:10px 12px;
+    display:block;
+}
+
+.nav li a:hover {
+    background-color:#434343;
+}
+
+.nav li ul {
+    display:none;
+    position:absolute;
+    min-width:140px;
+}
+
+.nav li:hover > ul {
+    display:block;
+}
+
+.nav li ul li {
+    position:relative;
+}
+
+.nav li ul li ul {
+    right:-140px;
+    top:0px;
+}*/
+

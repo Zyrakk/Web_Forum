@@ -1,0 +1,10 @@
+.consulta {
+    border: 0.2em solid #00ffff;
+    box-shadow: 0 0 1.5em 0 #00a6bc;
+    width: 60%;
+    height: 70%;
+    position: absolute;
+    top: 20%;
+    text-align: center;
+}
+
