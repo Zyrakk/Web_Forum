@@ -16,26 +16,14 @@
 
 .content {
     margin-right: 14%;
-    margin-top: 10%;
-    margin-bottom: 10%;
+    margin-top: 20%;
+    padding-top: 5%;
     width: 50vw;
-    height: 65vh;
-    border: 0.2em solid #0ef;
-    box-shadow: 0 0 1.5em 0 #00a6bc;
-}
-
-.content_2 {
-    margin-right: 14%;
-    margin-top: 10%;
-    margin-bottom: 10%;
-    width: 50vw;
-    height: 65vh;
+    height: 60vh;
     border: 0.2em solid #0ef;
     box-shadow: 0 0 1.5em 0 #00a6bc;
     text-align: center;
     overflow-y: scroll;
-    top: 0;
-    bottom: 0;
     scrollbar-color: transparent transparent; /*Scrollbar en Firefox*/
 }
 
@@ -60,7 +48,6 @@ code {
     border: 2px solid rgb(5, 91, 97);
     background-color: black;
     padding: 1em;
-    text-align: left;
 }
 
 /*Colores*/
