@@ -1,19 +1,23 @@
 /*Base*/
 
 * {
-    margin: 0;
-    padding: 0;
-    font-family: arial;
-    color: #fff;
+  margin: 0;
+  padding: 0;
+  font-family: arial;
+  color: #fff;
+}
+
+html {
+  scrollbar-color: transparent transparent;
 }
 
 body {
-    width: 100vw;
-    height: 100vh;
-    background: #081b29;
-    display: flex;
-    justify-content: center;
-    align-content: center;
+  width: 100vw;
+  height: 100vh;
+  background: #081b29;
+  display: flex;
+  justify-content: center;
+  align-content: center;
 }
 
 /*Menú Superior*/

@@ -1,22 +1,36 @@
+.bodyy {
+    position: absolute;
+}
+
 /*Elementos Principales*/
 
 .title { 
     font-family: Arial Black; 
     font-weight: bold; 
     font-size: 30px; 
-    color: #fff; 
+    color: black;
     text-shadow: -2px 0 #0ef, 0 2px #0ef, 2px 0 #0ef, 0 -2px #0ef;
 }
 
-/*Caja Externa*/
+/*Cajas Externa*/
 
 .content {
-    position: absolute;
+    margin-right: 14%;
     margin-top: 10%;
     margin-bottom: 10%;
     width: 50vw;
     height: 65vh;
-    border: 2px solid #0ef;
+    border: 0.2em solid #0ef;
+    box-shadow: 0 0 1.5em 0 #00a6bc;
+}
+
+.content_2 {
+    margin-right: 14%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    width: 50vw;
+    height: 65vh;
+    border: 0.2em solid #0ef;
     box-shadow: 0 0 1.5em 0 #00a6bc;
     text-align: center;
     overflow-y: scroll;
@@ -33,6 +47,11 @@
 
 .subtitle {
     color: grey;
+}
+
+.subtitle_2 {
+    color: black;
+    text-shadow: -2px 0 white, 0 2px white, 2px 0 white, 0 -2px white;
 }
 
 code {
@@ -55,5 +74,5 @@ m {
 }
 
 b {
-    color: #0ef;
+    color: white;
 }
