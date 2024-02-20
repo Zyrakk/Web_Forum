@@ -29,6 +29,10 @@
 
 /*Codigo*/
 
+.scr_img {
+    text-shadow: -2px 0 #0ef, 0 2px #0ef, 2px 0 #0ef, 0 -2px #0ef;
+}
+
 .code_p {
     text-align: left;
 }
@@ -57,15 +61,15 @@ y {
 }
 
 m {
-    color: #7D2181;
+    color: #6b50c9;
 }
 
 c {
     color: #0ef;
 }
 
-b {
-    color: white;
+v {
+    color: #44b17d;
 }
 
 z {

@@ -53,7 +53,10 @@
         <!--Portada-->
         <div class="content">
             <h1 class="title">Website Project</h1><br>
-            <a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&color=F7F7F7&center=true&vCenter=true&random=false&width=435&lines=Welcome+to+my+Webpage" alt="Typing SVG" /></a>
+            <a class="scr_img"><img src="https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&color=F7F7F7&center=true&vCenter=true&random=false&width=435&lines=Welcome+to+my+Website" alt="Typing SVG" /></a>
+            <p>
+                <code>In the below lines I'll explain step by step how I created and hosted this page. Implementing security and covering some common vulns. <br> If you have questions go to the <a href="contact.html"><y>Contact</y></a> section to send a question</code>
+            </p>
         </div>
         <!--Bloque de Contenido 1-->
         <div class="content">
@@ -63,13 +66,13 @@
                     <p class="code_p">
                         <span class="comment"># - Update the system</span>
 
-                        <code><y>sudo</y> apt update && <y>sudo</y> apt upgrade</code>
+                        <code><y>sudo apt</y> update && <y>sudo apt</y> upgrade</code>
                     </p>
                         <h3 class="subtitle">Apache2 Web Server</h3>
                     <p class="code_p">
                         <span class="comment"># Install and test Apache2</span>
 
-                        <code><y>sudo</y> apt install <z>apache2</z> <y>-y</y></code>
+                        <code><y>sudo apt</y> install <m>apache2</m> <y>-y</y></code>
 
                                     <span class="comment"># Get the hostname</span>
 
@@ -80,7 +83,7 @@
 
                         <span class="comment"># Grant your user the permissions for apache2</span>
 
-                        <code><y>sudo</y> usermod <y>-a -G</y> www-data 'user'<br><y>sudo</y> chown <y>-R -f</y> www-data:www-data /var/www/html</code>
+                        <code><y>sudo usermod -a -G</y> www-data 'user'<br><y>sudo</y> chown <y>-R -f</y> www-data:www-data /var/www/html</code>
 
                                     <span class="comment"># To apply the changes you need to log out and log in</span>
 
@@ -91,7 +94,7 @@
                     <p class="code_p">
                         <span class="comment"># Installing dependencies</span>
 
-                        <code><y>sudo</y> apt install <m>php libapache2-mod-php php-mbstring php-mysql php-curl php-gd php-zip</m> <br><m>php-cgi php-json</m> <y>-y</y></code>
+                        <code><y>sudo apt</y> install <m>php libapache2-mod-php php-mbstring php-mysql php-curl</m> <br><m>php-gd php-zip php-cgi php-json</m> <y>-y</y></code>
 
                         <span class="comment"># Test if PHP is correctly installed</span>
                     </p>

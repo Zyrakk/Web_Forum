@@ -85,7 +85,14 @@ sudo apt update && sudo apt upgrade
 			AllowOverride None
 			Require all granted
 		</Directory>
-	
+
+		# Add this if you only want connections to the "PHPMyAdmin" module by the localhost
+		<Directory "/usr/share/phpmyadmin">
+			order deny,allow
+			deny from all
+			allow from 127.0.0.0/255.0.0.0
+		</Directory>
+
 	# Restart apache2 service
 	sudo service apache2 restart
 
@@ -95,7 +102,8 @@ sudo apt update && sudo apt upgrade
 
 ```bash
 
-# 
+# I have the sources of my Web in GitHub
+
 
 ```
 

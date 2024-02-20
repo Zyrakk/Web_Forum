@@ -7,6 +7,10 @@
   color: #fff;
 }
 
+a {
+  text-decoration: none;
+}
+
 html {
   scrollbar-color: transparent transparent;
 }
