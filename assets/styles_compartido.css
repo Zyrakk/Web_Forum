@@ -70,7 +70,7 @@ body {
 /*Version Movil*/
 
 @media screen and (max-width: 768px) {
-	
+
     .header1 {visibility: hidden;}
     .header2 {visibility: visible;}
 
@@ -116,7 +116,8 @@ body {
       #main {
         position: absolute;
         z-index: 2;
-        padding: 6%;
+        padding: 3%;
+        border: 0.2em solid #0ef;
         left: 0;
         top: 0;
       }

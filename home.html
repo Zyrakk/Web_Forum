@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="website, project, tutorial">
+    <meta name="author" content="Stefan Contreras">
     <!--Hojas de Estilo CSS y Favicon-->
     <link rel="stylesheet" href="./assets/styles_compartido.css">
     <link rel="stylesheet" href="./assets/styles_home.css">
@@ -53,11 +55,20 @@
         <!--Portada-->
         <div class="content">
             <h1 class="title">Website Project</h1><br>
-            <a class="scr_img"><img src="https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&color=F7F7F7&center=true&vCenter=true&random=false&width=435&lines=Welcome+to+my+Website" alt="Typing SVG" /></a>
+            <figure>
+                <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&color=0ef&center=true&vCenter=true&random=false&width=435&lines=Welcome+to+my+Website" alt="Typing SVG">
+                <figcaption>From Github</figcaption>
+            </figure>
             <p>
-                <code>In the below lines I'll explain step by step how I created and hosted this page. Implementing security and covering some common vulns. <br> If you have questions go to the <a href="contact.html"><y>Contact</y></a> section to send a question</code>
+                <code class="comment">In the following lines I'll explain step by step how I created and hosted this page. Implementing security and covering some common vulnerabilities. <br><br> If you have questions go to the <a href="contact.html"><y>Contact</y></a> section to send a question</code>
+            </p>
+            <p class="code_p">
+                <br><h2 class="subtitle">Content:</h2><br>
+                <h3><a href="#part_1"><c>Part 1</c></a></h3>
+                <h3><a href="#part_2"><c>Part 2</c></a></h3>
             </p>
         </div>
+        <address id="part_1""></address>
         <!--Bloque de Contenido 1-->
         <div class="content">
             <article>
@@ -83,7 +94,7 @@
 
                         <span class="comment"># Grant your user the permissions for apache2</span>
 
-                        <code><y>sudo usermod -a -G</y> www-data 'user'<br><y>sudo</y> chown <y>-R -f</y> www-data:www-data /var/www/html</code>
+                        <code><y>sudo usermod -a -G</y> www-data <v>'user'</v><br><y>sudo chown -R -f</y> www-data:www-data /var/www/html</code>
 
                                     <span class="comment"># To apply the changes you need to log out and log in</span>
 
@@ -97,12 +108,27 @@
                         <code><y>sudo apt</y> install <m>php libapache2-mod-php php-mbstring php-mysql php-curl</m> <br><m>php-gd php-zip php-cgi php-json</m> <y>-y</y></code>
 
                         <span class="comment"># Test if PHP is correctly installed</span>
+
+                        <code><y>sudo nano</y> /var/www/html/example.php</code>
+
+                                    <span class="comment"># Enter this prompt in the file</span>
+
+                        <code><z>&lt;?php<br>echo "Today's date is ".date('Y-m-d H:i:s');<br>?></z></code>
+
+                                    <span class="comment"># Go to the page http://192.168.1.XXX/example.php</span>
+
+                                    <span class="comment"># Replace XXX with your local address</span>
+                                    
+                                    <span class="comment"># It should appear like: 'Today's date is 2019-06-28 21:30:45'</span>
+
+                        
                     </p>
                 </pre>
             </article>
         </div>
+        <address id="part_2"></address>
         <!--Bloque de Contenido 2-->
-        <div class="content">
+        <div class="content" id="cont_3">
 
         </div>
     </div>
