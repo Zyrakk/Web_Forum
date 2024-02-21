@@ -8,3 +8,54 @@
     text-align: center;
 }
 
+.form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.title{
+    font-size: 2.3em;
+    margin-top: 2%;
+}
+
+.inp{
+    padding-bottom: 0.5em;
+    border-bottom: 0.1em solid #eee;
+}
+
+.input, .input_2, .input_3 {
+    border: none;
+    outline: none;
+    background: none;
+    margin-top: 1.8em;
+    padding-left: 1em;
+    font-size: 1em;
+    color: #0ef;
+}
+
+.input {
+    width: 30vw;
+}
+
+.input_2 {
+    width: 14.5vw;
+}
+
+.input_3 {
+    width: 10vw;
+}
+
+input[type="time"]::-webkit-date-picker-indicator {
+    background: none;
+  }
+
+inv {
+    color: transparent;
+}
+
+.fa-question {
+    margin-right: 3px;
+    margin-left: 3px;
+}

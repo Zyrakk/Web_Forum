@@ -51,14 +51,34 @@
             </script>
         </nav>
     </header>
-    <div class="consulta_wr">
+    <div class="consulta">
         <form action="#" class="form" method="POST">
-            <div>
-                <input type="text" name="faq" required placeholder="Escribe tu pregunta">
+            <h1 class="title">FAQ</h1>
+            <div class="inp">
+                <i class="fa-solid fa-arrow-right"></i>
+                <input type="text" name="faq" class="input" placeholder="Introduce your question here" required>
+                <i class="fa-solid fa-question"></i>
             </div>
-            <div>
-                <input type="text" name="reason" placeholder="Escribe la razon de tu pregunta (opcional)">
+            <div class="inp">
+                <i class="fa-solid fa-arrow-right" style="color: transparent;"></i>
+                <input type="email" name="email" class="input" placeholder="Introduce your email (Optional)" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}">
+                <i class="fa-solid fa-envelope"></i>
             </div>
+            <div class="inp">
+                <input type="number" name="numero" class="input_2" placeholder="Introduce your User ID here" min="0" max="100" step="5" >
+                <i class="fa-solid fa-fingerprint"></i>
+                <input type="date" name="fecha" class="input_2" placeholder="Choose a date">
+                <i class="fa-solid fa-calendar-days"></i>
+            </div>
+            <div class="inp">
+                <input type="radio" name="opcion" class="input_3" value="opcion1">
+                <label class="label">Option 1</label>
+                <input type="radio" name="opcion" class="input_3" value="opcion2">
+                <label class="label">Option 2</label>
+            </div>
+            <div class="inp">
+                <input type="checkbox" name="terminos" class="input" value="terminos" checked>
+                <label class="label">I accept terms and conditions</label>
         </form>
     </div>
 </body>
