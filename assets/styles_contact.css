@@ -1,3 +1,5 @@
+/*Caja Externa*/
+
 .consulta {
     border: 0.2em solid #00ffff;
     box-shadow: 0 0 1.5em 0 #00a6bc;
@@ -7,6 +9,8 @@
     top: 20%;
     text-align: center;
 }
+
+/*Formulario y elementos de Bloque*/
 
 .form{
     display: flex;
@@ -25,31 +29,61 @@
     border-bottom: 0.1em solid #eee;
 }
 
-.input, .input_2, .input_3 {
+.inp_2 {
+    width: 40vw;
+    text-align: left;
+}
+
+/*Inputs*/
+
+.input, .input_2, .input_3, .input_4, .input_5 {
     border: none;
     outline: none;
     background: none;
     margin-top: 1.8em;
-    padding-left: 1em;
     font-size: 1em;
     color: #0ef;
 }
 
 .input {
     width: 30vw;
+    padding-left: 1em;
 }
 
 .input_2 {
     width: 14.5vw;
+    padding-left: 1em;
 }
 
 .input_3 {
-    width: 10vw;
+    margin-left: 5vw;
 }
 
-input[type="time"]::-webkit-date-picker-indicator {
-    background: none;
-  }
+.input_4 {
+    margin-left: 5vw;
+    padding-left: 1em;
+}
+
+.input_5 {
+    margin-left: 10vw;
+    padding: 0.8em;
+    border: 2px solid #0ef;
+    color: white;
+}
+
+.input_5:hover {
+    background: linear-gradient(45deg, #0ef, #c800ff);
+}
+
+.lab_opt {
+    margin-left: 1em;
+}
+
+input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+}
 
 inv {
     color: transparent;
