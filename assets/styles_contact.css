@@ -36,7 +36,7 @@
 
 /*Inputs*/
 
-.input, .input_2, .input_3, .input_4, .input_5 {
+.input, .user_id, .calendar, .opt_radio, .check, .sub_res {
     border: none;
     outline: none;
     background: none;
@@ -50,29 +50,34 @@
     padding-left: 1em;
 }
 
-.input_2 {
+.user_id {
     width: 14.5vw;
     padding-left: 1em;
 }
 
-.input_3 {
+.calendar {
+    width: 13vw;
+}
+
+.opt_radio {
     margin-left: 5vw;
 }
 
-.input_4 {
+.check {
     margin-left: 5vw;
     padding-left: 1em;
 }
 
-.input_5 {
+.sub_res {
     margin-left: 10vw;
     padding: 0.8em;
     border: 2px solid #0ef;
     color: white;
 }
 
-.input_5:hover {
+.sub_res:hover {
     background: linear-gradient(45deg, #0ef, #c800ff);
+    cursor: pointer;
 }
 
 .lab_opt {
