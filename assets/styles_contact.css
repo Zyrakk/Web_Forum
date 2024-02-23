@@ -22,6 +22,8 @@
 .title{
     font-size: 2.3em;
     margin-top: 2%;
+    /*color: black;
+    text-shadow: -2px 0 white, 0 2px white, 2px 0 white, 0 -2px white;*/
 }
 
 .inp{
@@ -29,9 +31,13 @@
     border-bottom: 0.1em solid #eee;
 }
 
-.inp_2 {
+.inp_2, .options_box {
     width: 40vw;
     text-align: left;
+}
+
+.options_box {
+    margin-top: 2%;
 }
 
 /*Inputs*/
@@ -84,17 +90,27 @@
     margin-left: 1em;
 }
 
-input[type="date"]::-webkit-inner-spin-button,
-input[type="date"]::-webkit-calendar-picker-indicator {
-    display: none;
+.options {
+    display: inline-block;
+    height:42px;
+    min-width: 225px;
+    appearance: none;
     -webkit-appearance: none;
-}
-
-inv {
-    color: transparent;
+    height: 2.5em;
+    background-color: #000000;
+    margin-left: 5vw;
 }
 
 .fa-question {
     margin-right: 3px;
     margin-left: 3px;
 }
+
+hr {
+    border-image: linear-gradient(140deg, #0ef, #c800ff, #0ef) 30;
+	border-width: 2px;
+	border-style: solid;
+    width: 30vw;
+    margin-top: 1vw;
+}
+

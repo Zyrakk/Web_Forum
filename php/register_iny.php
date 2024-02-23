@@ -43,7 +43,7 @@
                 $stmt2->execute();
 
                 if ($stmt2->affected_rows > 0) {
-                    header("location: ../signup.php?success=Usuario creado con exito");
+                    header("location: ../login.php");
                     exit();
                 } else {
                     header("location: ../signup.php?error=Error en la creacion del usuario");

@@ -51,30 +51,9 @@ code {
     width: 70%;
     border: 2px solid rgb(5, 91, 97);
     background-color: black;
-    padding: 1em;
+    padding: 0.8em;
+    padding-bottom: 0.2em;
     overflow: scroll;
-}
-
-/*Colores*/
-
-y {
-    color: yellow;
-}
-
-m {
-    color: #8850c9;
-}
-
-c {
-    color: #0ef;
-}
-
-v {
-    color: #44b17d;
-}
-
-z {
-    color: blue;
 }
 
 /*Otros*/

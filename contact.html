@@ -7,6 +7,7 @@
     <meta name="author" content="Stefan Contreras">
     <!--Hojas de Estilo CSS y Favicon-->
     <link rel="stylesheet" href="./assets/styles_compartido.css">
+    <link rel="stylesheet" href="./assets/styles_colors.css">
     <link rel="stylesheet" href="./assets/styles_contact.css">
     <link rel="icon" href="./favicon.ico">
     <title>Contact</title>
@@ -54,6 +55,7 @@
     <div class="consulta">
         <form action="#" class="form" method="POST">
             <h1 class="title">FAQ</h1>
+            <hr>
             <div class="inp">
                 <i class="fa-solid fa-arrow-right"></i>
                 <input type="text" name="faq" class="input" placeholder="Introduce your question here" required>
@@ -66,10 +68,25 @@
                 <i class="fa-solid fa-envelope"></i>
             </div>
             <div class="inp">
-                <input type="number" name="numero" class="user_id" placeholder="Introduce your User ID here" min="0" max="100" step="5" >
-                <i class="fa-solid fa-fingerprint"></i>
+                <input type="number" name="numero" class="user_id" placeholder="Introduce your User ID here" min="0" max="100">
+                <i class="fa-solid fa-fingerprint"></i>&#160;&#160;&#160;
                 <input type="date" name="fecha" class="calendar" placeholder="Choose a date">
                 <i class="fa-solid fa-calendar-days"></i>
+            </div>
+        <div class="options_box">
+            <select class="options">
+                <option value="predet" selected>Choose a topic for your FAQ</option>
+                <optgroup label="Problems with the Code">
+                    <option value="1">Technical Problems</option>
+                    <option value="2">Syntax Error</option>
+                    <option value="3">Other</option>
+                </optgroup>
+                <optgroup label="Problems with the Webpage">
+                    <option value="4">Log-In</option>
+                    <option value="5">Register</option>
+                    <option value="6">Other</option>
+                </optgroup>
+            </select>
             </div>
             <div class="inp_2">
                 <label class="lab_opt">
@@ -84,9 +101,11 @@
             </div>
             <div class="inp_2">
                 <label class="lab_opt">
-                    <input type="checkbox" name="terms" class="check" value="terminos" checked>&#160;&#160;&#160;I accept terms and conditions
+                    <input type="checkbox" name="terms" class="check" value="terminos" checked>&#160;&#160;&#160;
+                    I accept <a href="https://www.termsandconditionsgenerator.com/live.php?token=dQ9KgX8x8QLBzkOmio9hVfG9qlXVqaLS" target="_blank"> <i><c>terms and conditions</c></i></a>
                 </label>
             </div>
+            <hr>
             <div class="inp_2">
                 <input type="submit" name="send" class="sub_res" value="Submit">
                 <input type="reset" name="reset" class="sub_res" value="Reset">
