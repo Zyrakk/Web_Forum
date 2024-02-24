@@ -38,7 +38,9 @@
 
 .options_box {
     margin-top: 2%;
-    width: 23vw;
+    margin-right: 12vw;
+    width: 5vw;
+    float: right;
 }
 
 /*Inputs*/
@@ -58,8 +60,8 @@
 }
 
 .user_id {
-    width: 14.5vw;
-    padding-left: 1em;
+    width: 13vw;
+    padding-left: 2em;
 }
 
 .calendar {
@@ -100,8 +102,10 @@
     height: 2.5em;
     background-color: #081b29;
     margin-left: 5vw;
-    border: 1px solid #0ef;
+    border: none;
+    outline: none;
     cursor: pointer;
+    font-size: 1em;
 }
 
 .fa-question {

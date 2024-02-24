@@ -8,7 +8,7 @@ m {
     color: #8850c9;
 }
 
-c {
+c, .c {
     color: #0ef;
 }
 
@@ -20,7 +20,11 @@ z {
     color: blue;
 }
 
-inv {
+k, .k {
+    color: grey;
+}
+
+inv, .inv {
     color: transparent;
 }
 
