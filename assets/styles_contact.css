@@ -114,3 +114,37 @@ hr {
     margin-top: 1vw;
 }
 
+@media screen and (max-width: 768px) {
+    .consulta {
+        width: 100vw;
+        height: auto;
+        padding-bottom: 5vw;
+    }
+
+    .options_box {
+        align-items: center;
+        width: 60vw;
+        padding-top: 5vw;
+    }
+
+    .inp_2, .input {
+        width: 70vw;
+    }
+
+    .user_id, .calendar {
+        width: 35vw;
+    }
+
+    .opt_radio {
+        margin-left: 0;
+    }
+
+    .lab_opt {
+        float: left;
+    }
+
+    hr {
+        width: 70vw;
+        margin-top: 5vw;
+    }
+}
