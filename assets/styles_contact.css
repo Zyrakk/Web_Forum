@@ -38,6 +38,7 @@
 
 .options_box {
     margin-top: 2%;
+    width: 23vw;
 }
 
 /*Inputs*/
@@ -97,14 +98,18 @@
     appearance: none;
     -webkit-appearance: none;
     height: 2.5em;
-    background-color: #000000;
+    background-color: #081b29;
     margin-left: 5vw;
+    border: 1px solid #0ef;
+    cursor: pointer;
 }
 
 .fa-question {
     margin-right: 3px;
     margin-left: 3px;
 }
+
+/*Others*/
 
 hr {
     border-image: linear-gradient(140deg, #0ef, #c800ff, #0ef) 30;
@@ -115,17 +120,23 @@ hr {
 }
 
 @media screen and (max-width: 768px) {
+
+    /*Caja Externa*/
+
     .consulta {
         width: 100vw;
         height: auto;
         padding-bottom: 5vw;
     }
 
+    /*Elementos de Bloque*/
+
     .options_box {
-        align-items: center;
         width: 60vw;
         padding-top: 5vw;
     }
+
+    /*Inputs*/
 
     .inp_2, .input {
         width: 70vw;
