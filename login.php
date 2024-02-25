@@ -55,7 +55,7 @@
     <!--Formulario de Inicio de Sesión-->
     <div class="wrapper">
         <form action="./php/loginp_iny.php" class="form" method="POST">
-            <h1 class="title">Iniciar Sesión</h1>
+            <h1 class="title">Log In</h1>
 
             <br>
             <?php
@@ -67,19 +67,19 @@
             <br>
 
             <div class="inp">
-                <input type="text" name="usernm" class="input" placeholder="Usuario">
+                <input type="text" name="usernm" class="input" placeholder="Username">
                 <i class="fa-solid fa-user"></i>
             </div>
             <div class="inp">
-                <input type="password" name="passwd" class="input" placeholder="Contraseña">
+                <input type="password" name="passwd" class="input" placeholder="Password">
                 <i class="fa-solid fa-lock"></i>
             </div>
-            <button class="submit">Iniciar Sesión</button>
-            <p class="footer">¿No tienes cuenta? <a href="signup.php" class="link">Por favor, Registrate</a></p>
+            <button class="submit">Log In</button>
+            <p class="footer">Don't have an Account? <a href="signup.php" class="link">Please, Sign Up</a></p>
         </form>
         <div></div>
         <div class="banner">
-            <h1 class="wel_text">Bienvenido<br></h1>
+            <h1 class="wel_text">Welcome<br></h1>
             <p class="para">Created by:<br>Stefan<br>:)</p>
         </div>
     </div>

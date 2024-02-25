@@ -55,7 +55,7 @@
     <div class="wrapper">
         <form action="./php/register_iny.php" class="form" method="POST">
 
-            <h1 class="title">Registrarse</h1>
+            <h1 class="title">Sign Up</h1>
 
             <br>
             <?php
@@ -72,23 +72,23 @@
             <?php } ?>
             <br>
             <div class="inp">
-                <input type="text" name="usernm" class="input" placeholder="Usuario">
+                <input type="text" name="usernm" class="input" placeholder="Username">
                 <i class="fa-solid fa-user"></i>
             </div>
             <div class="inp">
-                <input type="password" name="passwd" class="input" placeholder="Contraseña">
+                <input type="password" name="passwd" class="input" placeholder="Password">
                 <i class="fa-solid fa-lock"></i>
             </div>
             <div class="inp">
-                <input type="password" name="Rpasswd" class="input" placeholder="Repite la Contraseña">
+                <input type="password" name="Rpasswd" class="input" placeholder="Repeat the Password">
                 <i class="fa-solid fa-lock"></i>
             </div>
-            <button class="submit">Registrarse</button>
-            <p class="footer">¿Ya tienes cuenta? <a href="login.php" class="link">Por favor, Inicia Sesión</a> </p>
+            <button class="submit">Sign Up</button>
+            <p class="footer">Already have an Account? <a href="login.php" class="link">Please, Log In</a> </p>
         </form>
         <div></div>
         <div class="banner">
-            <h1 class="wel_text">Bienvenido<br/></h1>
+            <h1 class="wel_text">Welcome<br/></h1>
             <p class="para">Created by:<br>Stefan<br>:)</p>
         </div>
     </div>
