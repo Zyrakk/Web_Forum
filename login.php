@@ -31,7 +31,7 @@
         <!--Menu de Movil-->
         <nav class="nav2">
             <div id="main">
-                <span class="menu_but" onclick="openNav()">&#9776;Menu</span>
+                <span class="menu_but" onclick="openNav()">&#9776;</span>
             </div>
             <div id="mySidenav" class="sidenav">
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>

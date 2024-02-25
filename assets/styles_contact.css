@@ -26,19 +26,19 @@
     text-shadow: -2px 0 white, 0 2px white, 2px 0 white, 0 -2px white;*/
 }
 
-.inp{
+.inp, .inp_2{
     padding-bottom: 0.5em;
     border-bottom: 0.1em solid #eee;
 }
 
-.inp_2 {
+.inp_3 {
     width: 40vw;
     text-align: left;
 }
 
 /*Inputs*/
 
-.input, .user_id, .calendar, .opt_radio, .check, .sub_res {
+.input, .user_id, .opt_radio, .check, .sub_res {
     border: none;
     outline: none;
     background: none;
@@ -57,12 +57,8 @@
     padding-left: 2em;
 }
 
-.calendar {
-    width: 13vw;
-}
-
 .opt_radio {
-    margin-left: 5vw;
+    margin-left: 4vw;
 }
 
 .check {
@@ -83,7 +79,7 @@
 }
 
 .lab_opt {
-    margin-left: 1em;
+    margin-left: 1vw;
 }
 
 .options {
@@ -100,12 +96,12 @@
     -webkit-appearance: none;
 }
 
+/*Others*/
+
 .fa-question {
     margin-right: 3px;
     margin-left: 3px;
 }
-
-/*Others*/
 
 hr {
     border-image: linear-gradient(140deg, #0ef, #c800ff, #0ef) 30;
@@ -125,14 +121,20 @@ hr {
         padding-bottom: 5vw;
     }
 
+    /*Elementos de Bloque*/
+
+    .inp_2 {
+        width: 80vw;
+    }
+
     /*Inputs*/
 
-    .inp_2, .input {
+    .inp_3, .input, .options {
         width: 70vw;
     }
 
-    .user_id, .calendar {
-        width: 35vw;
+    .user_id {
+        width: 15vw;
     }
 
     .opt_radio {
@@ -141,6 +143,10 @@ hr {
 
     .lab_opt {
         float: left;
+    }
+
+    .options {
+        width: 50vw;
     }
 
     hr {

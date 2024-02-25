@@ -17,6 +17,7 @@
 <body>
     <!--Menú Superior-->
     <header class="header1">
+        <!--Menu de Escritorio-->
         <nav class="nav1">
             <ul class="top_menu">
                 <li><a href="home.html">Home</a></li>
@@ -31,7 +32,7 @@
         <!--Menu de Movil-->
         <nav class="nav2">
             <div id="main">
-                <span class="menu_but" onclick="openNav()">&#9776;Menu</span>
+                <span class="menu_but" onclick="openNav()">&#9776;</span>
             </div>
             <div id="mySidenav" class="sidenav">
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -67,8 +68,8 @@
                 pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}">
                 <i class="fa-solid fa-envelope"></i>
             </div>
-            <div class="inp">
-                <input type="number" name="user_id" class="user_id" placeholder="Introduce your User ID here" min="0" max="100">
+            <div class="inp_2">
+                <input type="number" name="user_id" class="user_id" placeholder="User ID" min="0" max="100">
                 <i class="fa-solid fa-fingerprint"></i>
                 <select class="options" name="topic">
                     <option value="predet" selected hidden>Choose a topic for your FAQ</option>
@@ -84,26 +85,25 @@
                     </optgroup>
                 </select>
             </div>
-            
-            <div class="inp_2">
+            <div class="inp_3">
                 <label class="lab_opt">
-                    <input type="radio" name="opt" class="opt_radio" value="1">&#160;&#160;Option 1
+                    <input type="radio" name="privacy" class="opt_radio" value="1" checked>&#160;&#160;Show User
                 </label>
                 <label class="lab_opt">
-                    <input type="radio" name="opt" class="opt_radio" value="2">&#160;&#160;Option 2
+                    <input type="radio" name="privacy" class="opt_radio" value="2">&#160;&#160;Don't show User
                 </label>
                 <label class="lab_opt">
-                    <input type="radio" name="opt" class="opt_radio" value="2">&#160;&#160;Option 3
+                    <input type="radio" name="privacy" class="opt_radio" value="2">&#160;&#160;Private FAQ
                 </label>
             </div>
-            <div class="inp_2">
+            <div class="inp_3">
                 <label class="lab_opt">
                     <input type="checkbox" name="terms" class="check" value="terminos" checked>&#160;&#160;&#160;
                     I accept <a href="https://www.termsandconditionsgenerator.com/live.php?token=dQ9KgX8x8QLBzkOmio9hVfG9qlXVqaLS" target="_blank"> <i><c>terms and conditions</c></i></a>
                 </label>
             </div>
             <hr>
-            <div class="inp_2">
+            <div class="inp_3">
                 <input type="submit" name="send" class="sub_res" value="Submit">
                 <input type="reset" name="reset" class="sub_res" value="Reset">
             </div>
