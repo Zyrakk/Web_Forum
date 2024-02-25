@@ -13,7 +13,7 @@ sudo apt update && sudo apt upgrade
 	# Install and test Apache2
 	sudo apt install apache2 -y
 		# Get the hostname
-		hostname -I
+		sudo hostname -I
 		# Test it in the web browser -> http://192.168.1.XXX/
 	# Grant your user the permissions for apache2
 	sudo usermod -a -G www-data 'user'
@@ -81,7 +81,7 @@ sudo apt update && sudo apt upgrade
 		# Add before </VirtualHost> label
 		<Directory /var/www/html>
 			DirectoryIndex 'index'.html
-			Options Indexes FollowSymLinks
+			Options FollowSymLinks
 			AllowOverride None
 			Require all granted
 		</Directory>

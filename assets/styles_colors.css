@@ -4,16 +4,8 @@ y, .y {
     color: yellow;
 }
 
-m, .m {
-    color: #8850c9;
-}
-
 c, .c {
     color: #0ef;
-}
-
-v, .v {
-    color: #44b17d;
 }
 
 z, .z {
@@ -26,6 +18,28 @@ k, .k {
 
 inv, .inv {
     color: transparent;
+}
+
+/*For the Code in -home-*/
+
+m, .m {
+    color: #8850c9;
+}
+
+l, .l {
+    color: #3598c2;
+}
+
+v, .v {
+    color: #49a582;
+}
+
+r, .r {
+    color: red;
+}
+
+n, .n {
+    color: #e99856;
 }
 
 /*Hiding Icons for Inputs*/
