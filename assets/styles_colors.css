@@ -1,10 +1,10 @@
 /*Colores*/
 
-y {
+y, .y {
     color: yellow;
 }
 
-m {
+m, .m {
     color: #8850c9;
 }
 
@@ -12,11 +12,11 @@ c, .c {
     color: #0ef;
 }
 
-v {
+v, .v {
     color: #44b17d;
 }
 
-z {
+z, .z {
     color: blue;
 }
 

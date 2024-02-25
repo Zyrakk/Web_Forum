@@ -70,21 +70,19 @@
             <div class="inp">
                 <input type="number" name="user_id" class="user_id" placeholder="Introduce your User ID here" min="0" max="100">
                 <i class="fa-solid fa-fingerprint"></i>
-                <div class="options_box">
-                    <select class="options" name="topic">
-                        <option value="predet" selected class="inv">Choose a topic for your FAQ</option>
-                        <optgroup label="Problems with the Code" class="c">
-                            <option value="1">Technical Problems</option>
-                            <option value="2">Syntax Error</option>
-                            <option value="3">Other</option>
-                        </optgroup>
-                        <optgroup label="Problems with the Webpage" class="c">
-                            <option value="4">Log-In</option>
-                            <option value="5">Register</option>
-                            <option value="6">Other</option>
-                        </optgroup>
-                    </select>
-                </div>
+                <select class="options" name="topic">
+                    <option value="predet" selected hidden>Choose a topic for your FAQ</option>
+                    <optgroup label="Problems with the Code" class="c">
+                        <option value="1">Technical Problems</option>
+                        <option value="2">Syntax Error</option>
+                        <option value="3">Other</option>
+                    </optgroup>
+                    <optgroup label="Problems with the Webpage" class="c">
+                        <option value="4">Log-In</option>
+                        <option value="5">Register</option>
+                        <option value="6">Other</option>
+                    </optgroup>
+                </select>
             </div>
             
             <div class="inp_2">

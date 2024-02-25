@@ -31,16 +31,9 @@
     border-bottom: 0.1em solid #eee;
 }
 
-.inp_2, .options_box {
+.inp_2 {
     width: 40vw;
     text-align: left;
-}
-
-.options_box {
-    margin-top: 2%;
-    margin-right: 12vw;
-    width: 5vw;
-    float: right;
 }
 
 /*Inputs*/
@@ -95,17 +88,16 @@
 
 .options {
     display: inline-block;
-    height:42px;
-    min-width: 225px;
-    appearance: none;
-    -webkit-appearance: none;
-    height: 2.5em;
     background-color: #081b29;
-    margin-left: 5vw;
-    border: none;
-    outline: none;
     cursor: pointer;
     font-size: 1em;
+    width: 15vw;
+    margin-left: 1.5vw;
+    /*Disable Pred. Styles*/
+    border: none;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
 }
 
 .fa-question {
@@ -131,13 +123,6 @@ hr {
         width: 100vw;
         height: auto;
         padding-bottom: 5vw;
-    }
-
-    /*Elementos de Bloque*/
-
-    .options_box {
-        width: 60vw;
-        padding-top: 5vw;
     }
 
     /*Inputs*/
