@@ -35,19 +35,32 @@
 
 .code_p {
     text-align: left;
+    padding-left: 6vw;
 }
 
 .comment {
+    display: block;
     color: grey;
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+}
+
+.tab {
+    margin-left: 3vw;
 }
 
 .subtitle {
     color: black;
     text-shadow: -2px 0 white, 0 2px white, 2px 0 white, 0 -2px white;
+    padding: 1vw;
+}
+
+.pad {
+    
 }
 
 code {
-    display: inline-block;
+    display: block;
     width: 70%;
     border: 2px solid rgb(5, 91, 97);
     background-color: #1c1827;
@@ -63,7 +76,18 @@ figcaption {
 }
 
 @media screen and (max-width: 768px) {
+
+    * {
+        overflow-x: hidden;
+    }
+
     .content {
         width: 100vw;
+        border-left: none;
+        border-right: none;
+    }
+
+    .subtitle {
+        padding-top: 5vw;
     }
 }
