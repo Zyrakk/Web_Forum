@@ -15,26 +15,29 @@
 </head>
 <body>
     <header>
-    <!--Perfil top-->
+        <!--Perfil top_right-->
         <nav class="nav_user">
-            <ul>
-                <li class="perfil">Perfil</li>
+            <ul class="list_user">
+                <li>
+                <button class="perfil" onclick="">
+                    <i class="fa-solid fa-hashtag"></i>My user &#160;
+                    <img src="./IMG/icon_profile_5.png" class="profile_img" alt="Profile Icon">
+                </button>
                     <ul>
-                        <li><a href="">Perfil</a></li>
-                        <li><a href="">Configuracion</a></li>
-                        <li><a href="">otros</a></li>
-                        <li><a href="../php/LogOut.php"><i class="fa-regular fa-user"></i>Cerrar Sesión</a></li>
+                        <li><button class="profile" onclick=""><i class="fa-solid fa-circle-user"></i>Profile</button></li>
+                        <li><button class="settings" onclick=""><i class="fa-solid fa-sliders"></i>Settings</button></li>
+                        <li><button class="other" onclick=""><i class="fa-solid fa-bomb"></i></i>Other</button></li>
+                        <li><button class="logout" onclick="location.href='../php/LogOut.php'"><i class="fa-solid fa-right-from-bracket"></i>Log Out</button></li>
                     </ul>
-                
+                </li>
             </ul>
         </nav>
     </header>
-    <h1>Has iniciado sesión</h1>
-    <br>
-    <button class="logout" onclick="location.href='../php/LogOut.php'"><i class="fa-regular fa-user"></i>Cerrar Sesión</button>
 </body>
 </html>
 
-<?php   }else {
-    header("location: ./home.html");
-} ?>
+<?php   
+    }else {
+        header("location: ../home.html");
+    }
+?>

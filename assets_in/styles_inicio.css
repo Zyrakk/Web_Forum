@@ -16,93 +16,58 @@ body {
     align-content: center;
 }
 
-/*Boton Cerrar Sesion*/
-
-/*.logout {
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1.3em;
-    color: #ffffff;
-    background: #081b29;
-    border: 3px solid #00ffff;
-    padding: 10px;
-    position: absolute;
-    right: 0;
-    top: 0;
-}
-
-.logout i {
-    padding-right: 5px;
-}*/
-
-/* ---------- Menu Desplegable ---------- */
+/*Menu Perfil*/
 
 ul, li {
-    list-style:none;
+    list-style: none;
 }
-
-/*Posicionar en la esquina*/
 
 .nav_user {
     position: absolute;
-    top: 0;
     right: 0;
 }
 
-/*Estilo del boton desplegable*/
+/*Imagenes*/
+
+.profile_img {
+    width: 2.5em;
+}
+
+/*Botones*/
+
+.logout, .profile, .settings, .other, .perfil {
+    font-weight: bold;
+    font-size: 1.2em;
+    color: #ffffff;
+    background: #081b29;
+    padding: 0.5em;
+    cursor: pointer;
+    width: 100%;
+    border-image: linear-gradient(#0ef, #c800ff) 20;
+    border-width: 2px;
+    border-style: solid;
+}
 
 .perfil {
-    border: 3px solid #00ffff;
-    background: #081b29;
-    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-image: linear-gradient(#0ef, #c800ff) 30;
+    border-width: 2px;
+    border-style: solid;
+    padding-left: 1em;
 }
 
-.nav_user li:hover > ul {
-    display: block;
+i {
+    padding-right: 0.5vw;
 }
 
-/*Ocultar y Mostrar el Desplegable*/
+/*Hide/Show the menu*/
 
 .nav_user li ul {
     display: none;
 }
 
-.nav_user li a {
-    display: block;
-}
-
-/*.nav > li {
-    float:left;
-}
-
-.nav li a {
-    background-color:#000;
-    color:#fff;
-    text-decoration:none;
-    padding:10px 12px;
+.nav_user li:hover ul {
     display:block;
 }
-
-.nav li a:hover {
-    background-color:#434343;
-}
-
-.nav li ul {
-    display:none;
-    position:absolute;
-    min-width:140px;
-}
-
-.nav li:hover > ul {
-    display:block;
-}
-
-.nav li ul li {
-    position:relative;
-}
-
-.nav li ul li ul {
-    right:-140px;
-    top:0px;
-}*/
-
