@@ -37,8 +37,9 @@
                         $_SESSION['Id'] = $Id;
                         $_SESSION['NombreUsuario'] = $NombreUsuario;
 
+                        # alert('Bienvenido $NombreUsuario');
+
                         echo "<script>
-                                alert('Bienvenido $NombreUsuario');
                                 location.href = '../Content_in/inicio.php'
                             </script>";
                     } else {
