@@ -29,6 +29,7 @@
 
 .inline {
     display: inline-block!important;
+    margin-top: 0;
 }
 
 #cont_3 {
