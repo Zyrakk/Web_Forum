@@ -20,7 +20,7 @@
             <ul class="list_user">
                 <li>
                 <button class="perfil" onclick="">
-                    <i class="fa-solid fa-hashtag"></i>My user &#160;
+                    <i class="fa-solid fa-hashtag"></i><?= $_SESSION['NombreUsuario'] ?> &#160;
                     <img src="./IMG/icon_profile_5.png" class="profile_img" alt="Profile Icon">
                 </button>
                     <ul>
