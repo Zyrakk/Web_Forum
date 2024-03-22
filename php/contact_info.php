@@ -19,9 +19,11 @@
         $email = validar($_POST['email']);
         $user_id = validar($_POST['user_id']);
         $date = validar($_POST['date']);
-        $ = validar($_POST['faq']);
-        $faq = validar($_POST['faq']);
-        $faq = validar($_POST['faq']);
+        $topic = validar($_POST['topic']);
+        $opt = validar($_POST['opt']);
+        $terms = validar($_POST['terms']);
+
+        
 
 
 
