@@ -1,5 +1,10 @@
 <?php
 
+    #     ^ ^
+    #    (O,O)
+    #    (   )
+    #    -"-"--
+
     $host = "localhost";
     $user = "lyra";
     $pass = "zyrak0612";

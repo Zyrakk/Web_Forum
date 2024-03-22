@@ -37,7 +37,10 @@
                         $_SESSION['Id'] = $Id;
                         $_SESSION['NombreUsuario'] = $NombreUsuario;
 
-                        # alert('Bienvenido $NombreUsuario');
+                        #     ^ ^
+                        #    (O,O)
+                        #    (   )
+                        #    -"-"--
 
                         echo "<script>
                                 location.href = '../Content_in/inicio.php'

@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="website, project, tutorial">
-    <meta name="author" content="Stefan Contreras">
+    <!-- ^ ^
+        (O,O)
+        (   )
+        -"-"-- -->
     <!--Hojas de Estilo CSS y Favicon-->
     <link rel="stylesheet" href="./assets/styles_compartido.css">
     <link rel="stylesheet" href="./assets/styles_login.css">

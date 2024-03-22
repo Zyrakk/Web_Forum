@@ -33,6 +33,11 @@
             $stmt->execute();
             $result = $stmt->get_result();
 
+            #     ^ ^
+            #    (O,O)
+            #    (   )
+            #    -"-"--
+
             if ($result->num_rows > 0) {
                 header("location: ../signup.php?error=El usuario ya existe");
                 exit();

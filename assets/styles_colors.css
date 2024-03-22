@@ -44,6 +44,11 @@ n, .n {
 
 /*Hiding Icons for Inputs*/
 
+/*   ^ ^
+    (O,O)
+    (   )
+    -"-"-- */
+
 /*For Chrome*/
 
 input[type="date"]::-webkit-inner-spin-button,

@@ -98,6 +98,11 @@
 
 /*Version Movil*/
 
+/*   ^ ^
+    (O,O)
+    (   )
+    -"-"-- */
+
 @media screen and (max-width: 768px) {
     
     .banner{visibility: hidden;}

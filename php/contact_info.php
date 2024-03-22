@@ -1,6 +1,9 @@
-# faq, email, user_id, date, topic (1-6), opt (1-3), terms
-
 <?php
+
+    #     ^ ^
+    #    (O,O)
+    #    (   )
+    #    -"-"--
 
     session_start();
 

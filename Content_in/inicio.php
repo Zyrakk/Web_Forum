@@ -1,4 +1,10 @@
 <?php 
+
+    #     ^ ^
+    #    (O,O)
+    #    (   )
+    #    -"-"--
+    
     session_start();
     if (isset($_SESSION['Id']) && isset($_SESSION['NombreUsuario'])) {
 ?>
