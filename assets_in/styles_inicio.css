@@ -1,78 +1,229 @@
+@import url("https://pro.fontawesome.com/releases/v6.0.0-beta1/css/all.css");
+
 /*Base*/
 
 * {
     margin: 0;
     padding: 0;
-    font-family: arial;
-    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 body {
+    position: fixed;
     width: 100vw;
     height: 100vh;
-    background: #081b29;
-    display: flex;
-    justify-content: center;
-    align-content: center;
+    background-color: #e5e9f4;
+    font-weight: 400;
+    line-height: 1.5em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 /*Menu Perfil*/
 
-ul, li {
-    list-style: none;
-}
+/*Principal*/
 
-.nav_user {
-    position: absolute;
+.container {
+    position: fixed;
+    top: 0;
     right: 0;
 }
 
-/*Imagenes*/
-
-.profile_img {
-    width: 2.5em;
-}
-
-/*Botones*/
-
-.logout, .profile, .settings, .other, .perfil {
-    font-weight: bold;
-    font-size: 1.2em;
-    color: #ffffff;
-    background: #081b29;
-    padding: 0.5em;
-    cursor: pointer;
-    width: 100%;
-    border-image: linear-gradient(#0ef, #c800ff) 20;
-    border-width: 2px;
-    border-style: solid;
-}
-
-.perfil {
-    display: flex;
+.btn {
+    outline: 0;
+    display: inline-flex;
     align-items: center;
-    justify-content: center;
-    border-image: linear-gradient(#0ef, #c800ff) 30;
-    border-width: 2px;
-    border-style: solid;
-    padding-left: 1em;
+    justify-content: space-between;
+    min-width: 260px;
+    border-color: #c800ff;
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .1);
+    box-sizing: border-box;
+    padding: 16px 20px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    overflow: hidden;
+    cursor: pointer;
+    background-color: #e5e9f4;
 }
 
-i {
-    padding-right: 0.5vw;
+/*Animation*/
+
+.btn:focus .dropdown, .btn:active .dropdown {
+    transform: translate(0, 20px);
+    opacity: 1;
+    visibility: visible;
 }
 
-/*Hide/Show the menu*/
+/*Desplegable*/
 
-.nav_user li ul {
-    display: none;
+.btn .dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #ffffff;
+    width: 100%;
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .1);
+    text-align: left;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s ease;
+    list-style: none;
 }
 
-.nav_user li:hover ul {
+/*Pico*/
+
+.btn .dropdown:before {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: 20px;
+    width: 0;
+    height: 0;
+    box-shadow: 2px -2px 6px rgba(0, 0, 0, .05);
+    border-top: 6px solid #ffffff;
+    border-right: 6px solid #ffffff;
+    border-bottom: 6px solid transparent;
+    border-left: 6px solid transparent;
+    transform: rotate(-45deg);
+    mix-blend-mode: multiple;
+}
+
+/*Lista Interna*/
+
+.btn .dropdown li {
+    position: relative;
+    background: #ffffff;
+    padding: 0 20px;
+    color: #666;
+}
+
+.btn .dropdown li.active, .btn .dropdown li:hover {
+    color: #c800ff;
+}
+
+.btn .dropdown li:first-child {
+    border-radius: 4px 4px 0 0;
+}
+
+.btn .dropdown li:last-child {
+    border-radius: 0 0 4px 4px;
+}
+
+.btn .dropdown li:last-child a {
+    border-bottom: 0;
+}
+
+.btn .dropdown a {
+    display: block;
+    border-bottom: 1px solid rgba(0, 0, 0, .05);
+    padding: 16px 0;
+    color: inherit;
+    font-size: 10px;
+    text-decoration: none;
+}
+
+
+/*Menu Botones*/
+
+  button.sq_button {
+    container-type: inline-size;
+    aspect-ratio: 1/1;
+    border: 0.5rem solid transparent;
+    border-radius: 1rem;
+    color: hsl(0, 0%, 10%);
+    background: none;
+    display: grid;
+    place-content: center;
+    gap: 1rem;
+    --shadow:
+      -.5rem -.5rem 1rem hsl(0 0% 100% / .75),
+      .5rem .5rem 1rem hsl(0 0% 50% / .5);
+    box-shadow: var(--shadow);
+    outline: none;
+    transition: all 0.1s;
+  }
+  
+  button.sq_button:hover, button.sq_button:focus-visible {
+    color: #0ef;
+    scale: 1.1;
+  }
+  
+  button.sq_button:active {
+    box-shadow: var(--shadow), inset 0.5rem 0.5rem 1rem hsla(0, 0%, 50%, 0.5), inset -0.5rem -0.5rem 1rem hsla(0, 0%, 100%, 0.75);
+    color: #0ef;
+  }
+  
+  button.sq_button:active > i {
+    font-size: 28cqi;
+  }
+  
+  button.sq_button:active > span {
+    font-size: 13cqi;
+  }
+  
+  button.sq_button > i {
+    font-size: 31cqi;
+  }
+  
+  button.sq_button > span {
+    font-family: system-ui, sans-serif;
+    font-size: 16cqi;
+  }
+  
+  .buttons {
+    display: grid;
+    margin-top: 18%;
+    width: min(75rem, 100%);
+    margin-inline: auto;
+    grid-template-columns: repeat(auto-fit, minmax(min(8rem, 100%), 1fr));
+    gap: 2rem;
+  }
+
+  /*Switch Dark Mode*/
+
+  .darkModeSwitch{
+    background: #000000;
+    display: flex;
+    position: relative;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    border-radius: 1rem;
+    align-self: center;
+    justify-content: space-between;
+}
+
+.darkModeSwitch span{
+    width:30px;
+    line-height:30px;
     display:block;
+    color:#ffffff;
+    background: none;
 }
 
-/*   ^ ^
-    (O,O)
-    (   )
-    -"-"-- */
+.darkModeSwitch::after{
+    display:block;
+    background: #000000de;
+    width: 1.9rem;
+    height: 1.9rem;
+    position: absolute;
+    top:0;
+    left:0;
+    right:unset;
+    border-radius: 3rem;
+    transition: all .5s ease;
+    content: "";
+}
+
+.darkModeSwitch.active{
+  background: #030e2a;
+}
+
+.darkModeSwitch.active::after{
+  left:unset;
+  right:0;
+}

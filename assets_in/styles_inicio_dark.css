@@ -1,0 +1,30 @@
+.dark, .dark .btn, .dark .btn .dropdown, .dark button.sq_button {
+    background-color: #081b29;
+    color: #ffffff;
+}
+
+.dark .btn, .dark .btn .dropdown, .dark .btn .dropdown:before {
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+}
+
+.dark .btn .dropdown:before {
+    border-top: 6px solid #081b29;
+    border-right: 6px solid #081b29;
+}
+
+.dark .btn .dropdown a {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.dark button.sq_button:hover, .dark button.sq_button:focus-visible {
+    color: #0ef;
+}
+
+.dark .btn .dropdown li.active, .dark .btn .dropdown li:hover {
+    color: #c800ff;
+}
+
+.dark .btn .dropdown li {
+    background-color: #000000;
+    color: #ffffff;
+}
