@@ -29,7 +29,7 @@
                 <ul class="dropdown">
                     <li><a href="#"><i class="fa-duotone fa-user"></i>&#160;&#160;&#160;Profile</a></li>
                     <li><a href="#"><i class="fa-duotone fa-gears"></i>&#160;&#160;Settings</a></li>
-                    <li><a href="#"><i class="fa-duotone fa-right-from-bracket"></i>&#160;&#160;&#160;Log Out</a></li>
+                    <li><a href="../php/LogOut.php"><i class="fa-duotone fa-right-from-bracket"></i>&#160;&#160;&#160;Log Out</a></li>
                 </ul>
             </button>
         </nav>
@@ -41,7 +41,7 @@
     </header>
     <!--Botones-->
     <div class="buttons">  
-      <button class="sq_button">
+      <button class="sq_button" onclick="location.href='../mybb'">
         <i class="fa-light fa-messages"></i>
         <span>Z-Forum</span>
       </button>
