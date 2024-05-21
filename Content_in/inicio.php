@@ -27,9 +27,9 @@
                 <i class="fa-solid fa-hashtag"></i><?= $_SESSION['NombreUsuario'] ?>
                 <!--<img src="./IMG/icon_profile_5.png" class="profile_img" alt="Profile Icon">-->
                 <ul class="dropdown">
-                    <li><a href="#"><i class="fa-duotone fa-user"></i>&#160;&#160;&#160;Profile</a></li>
-                    <li><a href="#"><i class="fa-duotone fa-gears"></i>&#160;&#160;Settings</a></li>
-                    <li><a href="../php/LogOut.php"><i class="fa-duotone fa-right-from-bracket"></i>&#160;&#160;&#160;Log Out</a></li>
+                    <li><a href="#"><i class="fa-solid fa-square-user"></i>&#160;&#160;&#160;Profile</a></li>
+                    <li><a href="#"><i class="fa-sharp fa-solid fa-gear"></i>&#160;&#160;Settings</a></li>
+                    <li><a href="../php/LogOut.php"><i class="fa-sharp fa-solid fa-right-from-bracket"></i>&#160;&#160;&#160;Log Out</a></li>
                 </ul>
             </button>
         </nav>
