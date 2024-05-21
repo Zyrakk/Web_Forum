@@ -5,7 +5,6 @@
 
 .dark .btn, .dark .btn .dropdown, .dark .btn .dropdown:before {
     box-shadow: 0 4px 12px rgba(160, 160, 160, 0.5);
-    border: 1px solid #A0A0A0;
 }
 
 .dark .btn .dropdown:before {
