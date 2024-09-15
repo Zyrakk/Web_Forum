@@ -1,5 +1,5 @@
 <?php
-    require('php/mantenimiento.php');
+    require('php/maintenance_check.php');
 ?>
 
 <!DOCTYPE html>
