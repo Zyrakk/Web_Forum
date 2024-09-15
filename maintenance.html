@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Sitio en Mantenimiento</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f9;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            text-align: center;
+            max-width: 600px;
+        }
+        h1 {
+            font-size: 48px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 18px;
+            color: #666;
+        }
+        .progress-container {
+            width: 100%;
+            background-color: #ddd;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        .progress-bar {
+            width: 0;
+            height: 30px;
+            background-color: #4caf50;
+            border-radius: 10px;
+        }
+        .countdown {
+            font-size: 24px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Sitio en Mantenimiento</h1>
+        <p>Estamos trabajando para mejorar tu experiencia. El sitio estará disponible en:</p>
+        <div class="countdown" id="countdown">00d 00h 00m 00s</div>
+
+        <div class="progress-container">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+
+        <p>Gracias por tu paciencia.</p>
+    </div>
+
+    <script>
+        // Fecha y hora de inicio del mantenimiento: 15 de septiembre, 18:00 (hora de Madrid, CEST)
+        const startTime = new Date('2024-09-15T18:00:00+02:00').getTime(); 
+
+        // Fecha y hora de finalización del mantenimiento: 18 de septiembre, 18:00 (hora de Madrid, CEST)
+        const endTime = new Date('2024-09-18T18:00:00+02:00').getTime(); 
+
+        // Tiempo total del mantenimiento en milisegundos
+        const totalDuration = endTime - startTime;
+
+        // Obtener los elementos del DOM
+        const countdownElement = document.getElementById("countdown");
+        const progressBar = document.getElementById("progress-bar");
+
+        // Función que actualiza la cuenta regresiva y la barra de progreso
+        function updateCountdown() {
+            const now = new Date().getTime();  // Hora actual
+            const timeLeft = endTime - now;    // Tiempo restante en milisegundos
+
+            // Calcular días, horas, minutos y segundos restantes
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft / (1000 * 60 * 60)) % 24);
+            const minutes = Math.floor((timeLeft / (1000 * 60)) % 60);
+            const seconds = Math.floor((timeLeft / 1000) % 60);
+
+            // Mostrar la cuenta regresiva
+            countdownElement.innerHTML = 
+                `${days}d ${hours.toString().padStart(2, '0')}h ${minutes.toString().padStart(2, '0')}m ${seconds.toString().padStart(2, '0')}s`;
+
+            // Calcular el progreso desde el inicio del mantenimiento
+            const timePassed = now - startTime;
+            const progress = (timePassed / totalDuration) * 100;
+
+            // Actualizar el ancho de la barra de progreso
+            progressBar.style.width = `${progress}%`;
+
+            // Si el mantenimiento ha terminado, mostrar mensaje de "Disponible" y redirigir
+            if (timeLeft < 0) {
+                clearInterval(interval);
+                countdownElement.innerHTML = "¡El sitio ya está disponible!";
+                progressBar.style.width = '100%';
+
+                // Redirigir a la página home.html
+                window.location.href = "/home.html";
+            }
+        }
+
+        // Ejecutar la actualización inmediatamente al cargar la página
+        updateCountdown();
+
+        // Actualizar la cuenta regresiva cada segundo
+        const interval = setInterval(updateCountdown, 1000);
+    </script>
+
+</body>
+</html>
