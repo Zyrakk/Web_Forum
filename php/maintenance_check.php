@@ -1,6 +1,9 @@
 <?php
+// Configurar la zona horaria
+date_default_timezone_set('Europe/Madrid');
+
 // Configurar la fecha y hora de finalización del mantenimiento
-$maintenance_end_time = strtotime('2024-09-18 18:00:00 Europe/Madrid');
+$maintenance_end_time = strtotime('2024-09-18 18:00:00');
 
 // Obtener la hora actual
 $current_time = time();
