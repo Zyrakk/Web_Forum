@@ -26,11 +26,11 @@
         <!--Menu de Escritorio-->
         <nav class="nav1">
             <ul class="top_menu">
-                <li><a href="home.html">Home</a></li>
+                <li><a href="home.php">Home</a></li>
                 <li><a href="login.php">Log In</a></li>
                 <li><a href="signup.php">Register</a></li>
-                <li><a href="about.html"><u>About</u></a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="about.php"><u>About</u></a></li>
+                <li><a href="contact.php">Contact</a></li>
             </ul>
         </nav>
     </header>
@@ -42,11 +42,11 @@
             </div>
             <div id="mySidenav" class="sidenav">
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                <a href="home.html">Home</a>
+                <a href="home.php">Home</a>
                 <a href="login.php">Log In</a>
                 <a href="signup.php">Register</a>
-                <a href="about.html"><u>About</u></a>
-                <a href="contact.html">Contact</a>
+                <a href="about.php"><u>About</u></a>
+                <a href="contact.php">Contact</a>
             </div>
             <script>
                 function openNav() {
