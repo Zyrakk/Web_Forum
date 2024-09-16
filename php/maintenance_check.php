@@ -11,7 +11,7 @@ $current_time = time();
 // Verificar si el mantenimiento ha terminado
 if ($current_time < $maintenance_end_time) {
     // Redirigir a la página de mantenimiento si el mantenimiento no ha terminado
-    header('Location: ../maintenance.html');
+    header('Location: /maintenance.html');
     exit;
 }
 ?>
