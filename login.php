@@ -29,8 +29,6 @@
                 <li><a href="home.php">Home</a></li>
                 <li><a href="login.php"><u>Log In</u></a></li>
                 <li><a href="signup.php">Register</a></li>
-                <li><a href="about.php">About</a></li>
-                <li><a href="contact.php">Contact</a></li>
             </ul>
         </nav>
     </header>
@@ -45,8 +43,6 @@
                 <a href="home.php">Home</a>
                 <a href="login.php"><u>Log In</u></a>
                 <a href="signup.php">Register</a>
-                <a href="about.php">About</a>
-                <a href="contact.php">Contact</a>
             </div>
             <script>
                 function openNav() {
