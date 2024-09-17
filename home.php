@@ -65,8 +65,6 @@
             </figure>
         </div>
         <address id="part_1""></address>
-        <!--Bloque de Contenido 1-->
-        
     </div>
 </body>
 </html>
