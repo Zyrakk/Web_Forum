@@ -77,6 +77,6 @@
 
 <?php   
     }else {
-        header("location: ../home.html");
+        header("location: ../home.php");
     }
 ?>
