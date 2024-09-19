@@ -1,7 +1,7 @@
-// Fecha y hora de inicio del mantenimiento: 15 de septiembre, 18:00 (hora de Madrid, CEST)
+// Fecha y hora de inicio del mantenimiento:
 const startTime = new Date('2024-09-15T18:00:00+02:00').getTime(); 
 
-// Fecha y hora de finalización del mantenimiento: 16 de septiembre, 18:00 (hora de Madrid, CEST)
+// Fecha y hora de finalización del mantenimiento:
 const endTime = new Date('2024-09-16T18:00:00+02:00').getTime();
 
 // Tiempo total del mantenimiento en milisegundos

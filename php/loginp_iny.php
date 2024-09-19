@@ -46,15 +46,15 @@
                                 location.href = '../Content_in/inicio.php'
                             </script>";
                     } else {
-                        header("location: ../login.php?error=Usuario o contrasena incorrectos1");
+                        header("location: ../login.php?error=Usuario o contrasena incorrectos");
                         exit();
                     }
                 } else {
-                    header("location: ../login.php?error=Usuario o contrasena incorrectos2");
+                    header("location: ../login.php?error=Usuario o contrasena incorrectos");
                     exit();
                 }
             } else {
-                header("location: ../login.php?error=Usuario o contrasena incorrectos3");
+                header("location: ../login.php?error=Usuario o contrasena incorrectos");
                 exit();
             }
         }
