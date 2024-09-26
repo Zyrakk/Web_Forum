@@ -5,8 +5,8 @@
     #    (   )
     #    -"-"--
     
-    session_start();
-    if (isset($_SESSION['Id']) && isset($_SESSION['NombreUsuario'])) {
+    #session_start();
+    #if (isset($_SESSION['Id']) && isset($_SESSION['NombreUsuario'])) {
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +24,7 @@
         <!--Perfil top_right-->
         <nav class="container">
             <button class="btn">
-                <i class="fa-solid fa-hashtag"></i><?= $_SESSION['NombreUsuario'] ?>
+                <i class="fa-solid fa-hashtag"></i><?#= $_SESSION['NombreUsuario'] ?>Hola
                 <!--<img src="./IMG/icon_profile_5.png" class="profile_img" alt="Profile Icon">-->
                 <ul class="dropdown">
                     <li><a href="#"><i class="fa-solid fa-user"></i>&#160;&#160;&#160;Profile</a></li>
@@ -76,7 +76,7 @@
 </html>
 
 <?php   
-    }else {
-        header("location: ../home.php");
-    }
+    #}else {
+    #    header("location: ../home.php");
+    #}
 ?>

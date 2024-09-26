@@ -47,6 +47,8 @@ body {
     overflow: hidden;
     cursor: pointer;
     background-color: #e5e9f4;
+    margin-top: 20px;
+    margin-right: 20px;
 }
 
 /*Animation*/
