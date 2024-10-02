@@ -47,7 +47,7 @@
       </button>
 
       <button class="sq_button" onclick="location.href='../metadata/metadata.php'">
-        <i class="fa-solid fa-shield-cat"></i>
+        <i class="fa-light fa-fingerprint"></i>
         <span>Metadata</span>
       </button>
 
