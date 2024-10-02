@@ -18,7 +18,7 @@
 
 .dark button.sq_button:hover, .dark button.sq_button:focus-visible {
     color: #BB86FC;
-    border: 1px solid #03DAC6;
+    border: 1px solid transparent;
 }
 
 .dark .btn .dropdown li.active, .dark .btn .dropdown li:hover {

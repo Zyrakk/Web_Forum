@@ -53,10 +53,10 @@ body {
 
 /*Animation*/
 
-.btn:focus .dropdown, .btn:active .dropdown {
-    transform: translate(0, 20px);
-    opacity: 1;
-    visibility: visible;
+.btn.open .dropdown {
+  transform: translate(0, 20px);
+  opacity: 1;
+  visibility: visible;
 }
 
 /*Desplegable*/
@@ -187,45 +187,11 @@ body {
 
   /*Switch Dark Mode*/
 
-  .darkModeSwitch{
-    background: #000000;
-    display: flex;
-    position: relative;
+  #switch {
+    color: inherit; 
     cursor: pointer;
-    outline: none;
-    border: none;
-    border-radius: 1rem;
-    align-self: center;
-    justify-content: space-between;
-}
-
-.darkModeSwitch span{
-    width:30px;
-    line-height:30px;
-    display:block;
-    color:#ffffff;
-    background: none;
-}
-
-.darkModeSwitch::after{
-    display:block;
-    background: #000000de;
-    width: 1.9rem;
-    height: 1.9rem;
-    position: absolute;
-    top:0;
-    left:0;
-    right:unset;
-    border-radius: 3rem;
-    transition: all .5s ease;
-    content: "";
-}
-
-.darkModeSwitch.active{
-  background: #030e2a;
-}
-
-.darkModeSwitch.active::after{
-  left:unset;
-  right:0;
-}
+    text-decoration: none;
+    padding: 16px 0;
+    display: block;
+    font-size: 10px;
+  }

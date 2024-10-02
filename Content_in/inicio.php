@@ -5,8 +5,8 @@
     #    (   )
     #    -"-"--
     
-    #session_start();
-    #if (isset($_SESSION['Id']) && isset($_SESSION['NombreUsuario'])) {
+    session_start();
+    if (isset($_SESSION['Id']) && isset($_SESSION['NombreUsuario'])) {
 ?>
 
 <!DOCTYPE html>
@@ -24,20 +24,15 @@
         <!--Perfil top_right-->
         <nav class="container">
             <button class="btn">
-                <i class="fa-solid fa-hashtag"></i><?#= $_SESSION['NombreUsuario'] ?>Hola
+                <i class="fa-solid fa-hashtag"></i><?= $_SESSION['NombreUsuario'] ?>
                 <!--<img src="./IMG/icon_profile_5.png" class="profile_img" alt="Profile Icon">-->
                 <ul class="dropdown">
                     <li><a href="#"><i class="fa-solid fa-user"></i>&#160;&#160;&#160;Profile</a></li>
-                    <li><a href="#"><i class="fa-sharp fa-solid fa-gear"></i>&#160;&#160;Settings</a></li>
+                    <li><a href="#" id="switch"><i class="fa-solid fa-moon"></i>&#160;&#160;&#160;Dark Mode</a></li>
                     <li><a href="../php/LogOut.php"><i class="fa-sharp fa-solid fa-right-from-bracket"></i>&#160;&#160;&#160;Log Out</a></li>
                 </ul>
             </button>
         </nav>
-        <!--Boton modo oscuro-->
-        <button class="darkModeSwitch ms-2" id="switch">
-            <span><i class="fas fa-sun"></i></span>
-            <span><i class="fas fa-moon"></i></span> 
-        </button>
     </header>
     <!--Botones-->
     <div class="buttons">  
@@ -72,11 +67,12 @@
       </button>
     </div>
     <script type="text/javascript" src="../scripts/dark_switch.js"></script>
+    <script type="text/javascript" src="../scripts/user_menu.js"></script>
 </body>
 </html>
 
 <?php   
-    #}else {
-    #    header("location: ../home.php");
-    #}
+    }else {
+        header("location: ../home.php");
+    }
 ?>
