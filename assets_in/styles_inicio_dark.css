@@ -1,36 +1,36 @@
 .dark, .dark .btn, .dark .btn .dropdown, .dark button.sq_button {
-    background-color: #1A1A2E;
-    color: #EAEAEA;
+    background-color: #121212;
+    color: #F5F5F5;
 }
 
 .dark .btn, .dark .btn .dropdown, .dark .btn .dropdown:before {
-    box-shadow: 0 4px 12px rgba(160, 160, 160, 0.5);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
 
 .dark .btn .dropdown:before {
-    border-top: 6px solid #1A1A2E;
-    border-right: 6px solid #1A1A2E;
+    border-top: 6px solid #1F1F1F;
+    border-right: 6px solid #1F1F1F;
 }
 
 .dark .btn .dropdown a {
-    border-bottom: 1px solid rgba(234, 234, 234, 0.05);
+    border-bottom: 1px solid rgba(245, 245, 245, 0.1);
 }
 
 .dark button.sq_button:hover, .dark button.sq_button:focus-visible {
-    color: #00E1FF;
-    border: 1px solid #00BFFF;
+    color: #BB86FC;
+    border: 1px solid #03DAC6;
 }
 
 .dark .btn .dropdown li.active, .dark .btn .dropdown li:hover {
-    color: #C800FF;
+    color: #BB86FC;
 }
 
 .dark .btn .dropdown li {
-    background-color: #162447;
-    color: #EAEAEA;
+    background-color: #1F1F1F;
+    color: #F5F5F5;
 }
 
 .dark button.sq_button:active {
-    background-color: #162447;
-    border: 1px solid #00BFFF;
+    background-color: #292929;
+    border: 1px solid #03DAC6;
 }
