@@ -46,9 +46,9 @@
         <span>Z-Forum</span>
       </button>
 
-      <button class="sq_button">
-        <i class="fa-light fa-clapperboard-play"></i>
-        <span>Soon</span>
+      <button class="sq_button" onclick="location.href='../metadata/metadata.php'">
+        <i class="fa-solid fa-shield-cat"></i>
+        <span>Metadata</span>
       </button>
 
       <button class="sq_button">
