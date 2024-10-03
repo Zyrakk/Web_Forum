@@ -22,10 +22,6 @@ function updateCountdown() {
         const hours = Math.floor((timeLeft / (1000 * 60 * 60)) % 24);
         const minutes = Math.floor((timeLeft / (1000 * 60)) % 60);
         const seconds = Math.floor((timeLeft / 1000) % 60);
-        //   ^ ^
-        //  (O,O)
-        //  (   )
-        //  -"-"--
 
         // Mostrar la cuenta regresiva
         countdownElement.innerHTML = 
@@ -35,8 +31,8 @@ function updateCountdown() {
         const timePassed = now - startTime;
         const progress = (timePassed / totalDuration) * 100;
 
-        // Actualizar el ancho de la barra de progreso
-        progressBar.style.width = `${progress}%`;
+        // Asegurarse de que el progreso no supere el 100%
+        progressBar.style.width = `${Math.min(progress, 100)}%`;
     } else {
         // El mantenimiento ha terminado
         countdownElement.innerHTML = "¡El sitio ya está disponible!";
