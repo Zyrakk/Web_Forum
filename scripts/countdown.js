@@ -39,7 +39,7 @@ function updateCountdown() {
 
         // Redirigir a la página home.php
         setTimeout(() => {
-            window.location.href = "/home.php";
+            window.location.href = "../home.php";
         }, 3000); 
     }
 }

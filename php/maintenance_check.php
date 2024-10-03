@@ -17,8 +17,7 @@ $maintenance_start = new DateTime($config['maintenance_start']);
 $maintenance_end = new DateTime($config['maintenance_end']);
 
 // Verificar si estamos en el período de mantenimiento
-if ($current_time->getTimestamp() >= $maintenance_start->getTimestamp() &&
-    $current_time->getTimestamp() <= $maintenance_end->getTimestamp()) {
+if ($current_time >= $maintenance_start && $current_time <= $maintenance_end) {
     header('Location: /maintenance.php');
     exit;
 }
