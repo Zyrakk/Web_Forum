@@ -2,7 +2,7 @@
 const startTime = new Date('2024-10-01T18:00:00+02:00').getTime(); 
 
 // Fecha y hora de finalización del mantenimiento:
-const endTime = new Date('2024-10-05T18:00:00+02:00').getTime();
+const endTime = new Date('2024-10-02T18:00:00+02:00').getTime();
 
 // Tiempo total del mantenimiento en milisegundos
 const totalDuration = endTime - startTime;
