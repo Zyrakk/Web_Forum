@@ -1,9 +1,3 @@
-// Fecha y hora de inicio del mantenimiento:
-const startTime = new Date('2024-09-15T18:00:00+02:00').getTime(); 
-
-// Fecha y hora de finalización del mantenimiento:
-const endTime = new Date('2024-09-16T18:00:00+02:00').getTime();
-
 // Tiempo total del mantenimiento en milisegundos
 const totalDuration = endTime - startTime;
 
@@ -22,10 +16,6 @@ function updateCountdown() {
         const hours = Math.floor((timeLeft / (1000 * 60 * 60)) % 24);
         const minutes = Math.floor((timeLeft / (1000 * 60)) % 60);
         const seconds = Math.floor((timeLeft / 1000) % 60);
-        //   ^ ^
-        //  (O,O)
-        //  (   )
-        //  -"-"--
 
         // Mostrar la cuenta regresiva
         countdownElement.innerHTML = 
@@ -34,6 +24,11 @@ function updateCountdown() {
         // Calcular el progreso desde el inicio del mantenimiento
         const timePassed = now - startTime;
         const progress = (timePassed / totalDuration) * 100;
+
+        //   ^ ^
+        //  (O,O)
+        //  (   )
+        //  -"-"--
 
         // Actualizar el ancho de la barra de progreso
         progressBar.style.width = `${progress}%`;
@@ -44,7 +39,7 @@ function updateCountdown() {
 
         // Redirigir a la página home.php
         setTimeout(() => {
-            window.location.href = "home.php";
+            window.location.href = "../home.php";
         }, 3000); 
     }
 }
