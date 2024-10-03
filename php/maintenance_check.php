@@ -13,7 +13,9 @@ $maintenance_end = new DateTime($config['maintenance_end']);
 
 // Verificar si estamos en el período de mantenimiento
 if ($current_time >= $maintenance_start && $current_time <= $maintenance_end) {
-    // Redirigir a la página de mantenimiento si estamos en mantenimiento
-    header('Location: /maintenance.php');
+    echo "Mantenimiento en progreso";  // Solo para depuración
+    header('Location: /maintenance.html');
     exit;
+} else {
+    echo "No";
 }
