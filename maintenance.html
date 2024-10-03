@@ -28,15 +28,6 @@
         <p>Gracias por tu paciencia.</p>
     </div>
 
-    <?php
-    $config = include('./Config/maintenance_time.php');
-    ?>
-
-    <script type="text/javascript">
-        // Pasar las fechas de mantenimiento de PHP a JavaScript
-        const startTime = new Date('<?php echo $config['maintenance_start']; ?>').getTime();
-        const endTime = new Date('<?php echo $config['maintenance_end']; ?>').getTime();
-    </script>
     <script type="text/javascript" src="./scripts/countdown.js"></script>
 </body>
 </html>

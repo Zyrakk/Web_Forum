@@ -2,23 +2,16 @@
 // Configurar la zona horaria
 date_default_timezone_set('Europe/Madrid');
 
-$config = include('../config.php');
+// Configurar la fecha y hora de finalización del mantenimiento
+$maintenance_end_time = strtotime('2024-10-04 18:00:00');
 
 // Obtener la hora actual
-$current_time = new DateTime();
+$current_time = time();
 
-//     ^ ^
-//    (O,O)
-//    (   )
-//    -"-"--
-
-// Convertir las fechas de mantenimiento a objetos DateTime
-$maintenance_start = new DateTime($config['maintenance_start']);
-$maintenance_end = new DateTime($config['maintenance_end']);
-
-// Verificar si estamos en el período de mantenimiento
-if ($current_time >= $maintenance_start && $current_time <= $maintenance_end) {
-    header('Location: /maintenance.php');
+// Verificar si el mantenimiento ha terminado
+if ($current_time < $maintenance_end_time) {
+    // Redirigir a la página de mantenimiento si el mantenimiento no ha terminado
+    header('Location: /maintenance.html');
     exit;
 }
 ?>
