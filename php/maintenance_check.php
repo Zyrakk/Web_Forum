@@ -7,6 +7,11 @@ $config = include('../config.php');
 // Obtener la hora actual
 $current_time = new DateTime();
 
+//     ^ ^
+//    (O,O)
+//    (   )
+//    -"-"--
+
 // Convertir las fechas de mantenimiento a objetos DateTime
 $maintenance_start = new DateTime($config['maintenance_start']);
 $maintenance_end = new DateTime($config['maintenance_end']);
