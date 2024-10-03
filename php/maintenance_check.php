@@ -13,7 +13,6 @@ $maintenance_start = new DateTime($config['maintenance_start']);
 $maintenance_end = new DateTime($config['maintenance_end']);
 
 // Debug: Mostrar las fechas para verificar que son correctas
-echo "Hora actual: " . $current_time->format('Y-m-d H:i:s') . "<br>";
 echo "Inicio del mantenimiento: " . $maintenance_start->format('Y-m-d H:i:s') . "<br>";
 echo "Fin del mantenimiento: " . $maintenance_end->format('Y-m-d H:i:s') . "<br>";
 
