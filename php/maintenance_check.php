@@ -15,7 +15,7 @@ $maintenance_end = new DateTime($config['maintenance_end']);
 if ($current_time->getTimestamp() >= $maintenance_start->getTimestamp() &&
     $current_time->getTimestamp() <= $maintenance_end->getTimestamp()) {
     echo "Estamos en mantenimiento. Redirigiendo...";
-    header('Location: /maintenance.html');
+    header('Location: /maintenance.php');
     exit;
 } else {
     echo "No estamos en mantenimiento.";
