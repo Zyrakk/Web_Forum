@@ -1,22 +1,22 @@
-# Web Forum
+# 🌐 Web Forum
 
 Este es un proyecto de una página web con sistema de inicio de sesión y registro, que incluye varias herramientas, destacando un foro basado en MyBB. La aplicación está diseñada con un enfoque en seguridad para prevenir vulnerabilidades comunes.
 
-## Características
+## 🔹 Características
 
-- **Sistema de autenticación**: Registro e inicio de sesión seguros.
-- **Foro integrado**: Implementación con MyBB para la gestión de temas y mensajes.
-- **Medidas de seguridad**:
+- **🔑 Sistema de autenticación**: Registro e inicio de sesión seguros.
+- **💬 Foro integrado**: Implementación con MyBB para la gestión de temas y mensajes.
+- **🛡️ Medidas de seguridad**:
   - Protección contra inyección SQL.
   - Prevención de ataques XSS.
   - Restricción de acceso a directorios y landing pages no autorizados.
 
-## Requisitos
+## 📋 Requisitos
 
 - Servidor web con soporte para PHP.
 - Base de datos MySQL o compatible.
 
-## Instalación
+## 🚀 Instalación
 
 1. Clona el repositorio:
    ```bash
@@ -26,11 +26,10 @@ Este es un proyecto de una página web con sistema de inicio de sesión y regist
 3. Asegúrate de establecer permisos adecuados en los archivos y directorios necesarios.
 4. Accede a la página desde tu navegador y sigue el proceso de configuración inicial.
 
-## Contribuciones
+## 🤝 Contribuciones
 
 Las contribuciones son bienvenidas. Si deseas mejorar el proyecto, abre un *issue* o envía un *pull request*.
 
-## Licencia
+## 📜 Licencia
 
 Este proyecto se distribuye bajo la licencia MIT. Consulta el archivo `LICENSE` para más detalles.
-
