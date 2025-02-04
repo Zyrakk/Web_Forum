@@ -1,6 +1,6 @@
 <?php
     session_start();
-    include_once('../config/connect.php');
+    include_once('../Config/connect.php');
 
     if (isset($_POST['usernm']) && isset($_POST['passwd']) && isset($_POST['Rpasswd'])) {
         function validar($data){
