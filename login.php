@@ -1,7 +1,3 @@
-<?php
-    require('php/maintenance_check.php');
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +11,7 @@
     <!--Hojas de Estilo CSS y Favicon-->
     <link rel="stylesheet" href="./assets/styles_compartido.css">
     <link rel="stylesheet" href="./assets/styles_login.css">
-    <link rel="icon" href="./favicon.ico">
+    <link rel="icon" href="./sources/favicon.ico" type="image/x-icon">
     <title>Log In</title>
     <!--Librería de FontsAwesome-->
     <script src="https://kit.fontawesome.com/4cfcd8f4d3.js" crossorigin="anonymous"></script>
@@ -26,7 +22,7 @@
         <!--Menu de Escritorio-->
         <nav class="nav1">
             <ul class="top_menu">
-                <li><a href="home.php">Home</a></li>
+                <li><a href="portfolio.html">Home</a></li>
                 <li><a href="login.php"><u>Log In</u></a></li>
                 <li><a href="signup.php">Register</a></li>
             </ul>
@@ -40,7 +36,7 @@
             </div>
             <div id="mySidenav" class="sidenav">
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                <a href="home.php">Home</a>
+                <a href="portfolio.html">Home</a>
                 <a href="login.php"><u>Log In</u></a>
                 <a href="signup.php">Register</a>
             </div>
@@ -48,7 +44,7 @@
                 function openNav() {
                 document.getElementById("mySidenav").style.width = "100%";
                 }
-                
+
                 function closeNav() {
                 document.getElementById("mySidenav").style.width = "0";
                 }
@@ -83,7 +79,7 @@
         <div></div>
         <div class="banner">
             <h1 class="wel_text">Welcome<br></h1>
-            <p class="para">Created by:<br>Stefan<br>:)</p>
+            <p class="para">Created by:<br>Zyrakk<br>:)</p>
         </div>
     </div>
 </body>

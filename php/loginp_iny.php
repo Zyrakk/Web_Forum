@@ -1,6 +1,6 @@
 <?php
     session_start();
-    include_once('../Config/connect.php');
+    include_once('../config/connect.php');
 
     if (isset($_POST['usernm']) && isset($_POST['passwd'])) {
         function validate($data) {
@@ -43,7 +43,7 @@
                         #    -"-"--
 
                         echo "<script>
-                                location.href = '../Content_in/inicio.php'
+                                location.href = '../content_in/inicio.php'
                             </script>";
                     } else {
                         header("location: ../login.php?error=Usuario o contrasena incorrectos");

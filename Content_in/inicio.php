@@ -1,10 +1,10 @@
-<?php 
+<?php
 
     #     ^ ^
     #    (O,O)
     #    (   )
     #    -"-"--
-    
+
     session_start();
     if (isset($_SESSION['Id']) && isset($_SESSION['NombreUsuario'])) {
 ?>
@@ -17,6 +17,7 @@
     <!--Hojas de Estilo CSS-->
     <link rel="stylesheet" href="../assets_in/styles_inicio.css">
     <link rel="stylesheet" href="../assets_in/styles_inicio_dark.css">
+    <link rel="icon" href="../sources/favicon.ico" type="image/x-icon">
     <title>Inicio</title>
 </head>
 <body>
@@ -25,7 +26,7 @@
         <nav class="container">
             <button class="btn">
                 <i class="fa-solid fa-hashtag"></i><?= $_SESSION['NombreUsuario'] ?>
-                <!--<img src="./IMG/icon_profile_5.png" class="profile_img" alt="Profile Icon">-->
+                <!--<img src="../sources/icon_profile_5.png" class="profile_img" alt="Profile Icon">-->
                 <ul class="dropdown">
                     <li><a href="#"><i class="fa-solid fa-user"></i>&#160;&#160;&#160;Profile</a></li>
                     <li><a href="#" id="switch"><i class="fa-solid fa-moon"></i>&#160;&#160;&#160;Dark Mode</a></li>
@@ -35,7 +36,7 @@
         </nav>
     </header>
     <!--Botones-->
-    <div class="buttons">  
+    <div class="buttons">
       <button class="sq_button" onclick="location.href='../mybb'">
         <i class="fa-light fa-messages"></i>
         <span>Z-Forum</span>
@@ -71,8 +72,8 @@
 </body>
 </html>
 
-<?php   
+<?php
     }else {
-        header("location: ../home.php");
+        header("location: ../portfolio.html");
     }
 ?>
