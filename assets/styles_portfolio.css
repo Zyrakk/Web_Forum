@@ -65,6 +65,14 @@
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
+    background-color: #181818;
+    width: 100%;
+  }
+
+  .nav-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
   }
 
   /* Sección izquierda con logo y enlaces a otras páginas */
@@ -78,6 +86,7 @@
     font-size: 1.5rem;
     color: var(--color-accent);
     font-weight: 600;
+    margin-right: 2rem;
   }
 
   /* Enlaces a otras páginas */
@@ -102,6 +111,7 @@
     list-style: none;
     display: flex;
     gap: 1.5rem;
+    margin-left: auto;
   }
 
   .navbar-right a {
@@ -111,6 +121,16 @@
 
   .navbar-right a:hover {
     color: var(--color-accent);
+  }
+
+  /* --- Botón hamburguesa (solo en móviles) --- */
+  .menu-toggle {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: var(--color-text);
+    cursor: pointer;
+    display: none; /* Ocultar en pantallas grandes */
   }
 
   /* ---------------------------
@@ -406,23 +426,95 @@
   /* ---------------------------
      MEDIA QUERIES
   --------------------------- */
-  @media (max-width: 768px) {
-    .hero-content h1 {
-      font-size: 2rem;
-    }
-    .hero-content p {
-      font-size: 1.1rem;
+  /* --- NAVBAR MÓVIL --- */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 0;
     }
 
     .navbar-left {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 0.5rem;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+        background-color: #181818;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
     }
-    .nav-other-pages {
-      gap: 0.5rem;
+
+    .navbar-space {
+        height: 60px;
+        width: 100%;
     }
+
+    .menu-toggle {
+        display: block;
+        background: none;
+        border: none;
+        font-size: 2rem;
+        color: var(--color-text);
+        cursor: pointer;
+    }
+
+    .nav-container {
+        display: none; /* Ocultar menú inicialmente */
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        background-color: #181818;
+        padding-top: 80px;
+    }
+
+    .nav-container.active {
+        display: flex; /* Mostrar menú cuando tenga la clase .active */
+    }
+
+    .nav-other-pages,
     .navbar-right {
-      gap: 1rem;
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        gap: 10px;
+    }
+
+    .navbar-right {
+        margin-left: 0;
+    }
+
+    .nav-other-pages a,
+    .navbar-right a {
+        display: block;
+        padding: 12px;
+        width: 100%;
+        color: var(--color-text);
+        text-align: center;
+        transition: color var(--transition-speed);
+    }
+
+    .nav-other-pages a:hover,
+    .navbar-right a:hover {
+        color: var(--color-accent);
+    }
+
+    .nav-other-pages a {
+        white-space: nowrap;
+    }
+
+    .menu-toggle {
+        display: block;
+        background: none;
+        border: none;
+        font-size: 2rem;
+        color: var(--color-text);
+        cursor: pointer;
     }
   }

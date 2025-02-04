@@ -23,25 +23,26 @@
   <!-- NAVBAR -->
   <header class="header">
     <nav class="navbar">
-      <div class="navbar-left">
-        <!-- Logo -->
-        <div class="logo">Zyrakk</div>
-        <!-- Enlaces a otras páginas del mismo directorio -->
-        <ul class="nav-other-pages">
-          <li><a href="./mybb">Z-Forum</a></li>
-          <li><a href="./login.php">Login / Sign Up</a></li>
-        </ul>
-      </div>
+        <div class="navbar-left">
+            <div class="logo">Zyrakk</div>
+            <button class="menu-toggle" aria-label="Toggle navigation">☰</button>
+        </div>
 
-      <!-- Enlaces a secciones de esta misma página -->
-      <ul class="navbar-right">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#socials">Socials</a></li>
-      </ul>
+        <div class="nav-container">
+            <ul class="nav-other-pages">
+                <li><a href="./mybb">Z-Forum</a></li>
+                <li><a href="./login.php">Login / Sign Up</a></li>
+            </ul>
+            <ul class="navbar-right">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#socials">Socials</a></li>
+            </ul>
+        </div>
     </nav>
-  </header>
+</header>
+
 
   <!-- HERO / PORTADA -->
   <section id="home" class="hero">
@@ -137,13 +138,6 @@
     <p>&copy; 2025 Zyrakk. All rights reserved.</p>
   </footer>
 
-  <script>
-    async function fetchGitHubRepo() {
-      const response = await fetch("https://api.github.com/repos/Zyrakk/MiniSec");
-      const data = await response.json();
-      document.getElementById("repo-description_1").innerText = data.description || "Sin descripción disponible.";
-    }
-    fetchGitHubRepo();
-  </script>
+  <script type="text/javascript" src="./scripts/portfolio.js"></script>
 </body>
 </html>
