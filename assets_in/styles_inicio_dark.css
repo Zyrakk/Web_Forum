@@ -53,5 +53,5 @@
 .dark button.sq_button:active {
     background-color: #3A3A3A;
     border: 2px solid #BB86FC;
-    box-shadow: 0 4px 12px rgba(3, 218, 198, 0.5);
+    box-shadow: 0 4px 12px rgba(187, 134, 252, 0.5);
 }
