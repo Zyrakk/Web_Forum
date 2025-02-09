@@ -48,22 +48,22 @@
       </button>
 
       <button class="sq_button">
-        <i class="fa-light fa-dna"></i>
+        <i class="fa-light fa-tools"></i>
         <span>Soon</span>
       </button>
 
       <button class="sq_button">
-        <i class="fa-light fa-chart-mixed"></i>
+        <i class="fa-light fa-shield-alt"></i>
         <span>Soon</span>
       </button>
 
       <button class="sq_button">
-        <i class="fa-light fa-seedling"></i>
+        <i class="fa-light fa-network-wired"></i>
         <span>Soon</span>
       </button>
 
       <button class="sq_button">
-        <i class="fas fa-terminal"></i>
+        <i class="fa-light fa-terminal"></i>
         <span>Soon</span>
       </button>
     </div>
