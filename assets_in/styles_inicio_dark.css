@@ -55,3 +55,22 @@
     border: 2px solid #BB86FC;
     box-shadow: 0 4px 12px rgba(187, 134, 252, 0.5);
 }
+
+.dark .modal {
+    background: #222;
+    color: white;
+}
+
+.dark .close {
+    color: white;
+}
+
+.dark label {
+    color: white;
+}
+
+.dark input {
+    background: #333;
+    color: white;
+    border: 1px solid #666;
+}

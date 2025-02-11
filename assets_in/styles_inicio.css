@@ -197,7 +197,7 @@ body {
     font-size: 10px;
   }
 
-/* Estilo del modal */
+/* Modal - Modo Claro */
 .modal {
     display: none;
     position: fixed;
@@ -205,12 +205,12 @@ body {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    background: #222;
+    background: #F2F2F7;
     padding: 25px;
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     width: 350px;
-    color: white;
+    color: #2D2D2D;
     text-align: center;
 }
 
@@ -218,7 +218,7 @@ body {
 .modal-content {
     display: flex;
     flex-direction: column;
-    gap: 15px;  /* Espacio entre elementos */
+    gap: 15px;
 }
 
 /* Botón de cerrar */
@@ -228,7 +228,7 @@ body {
     top: 10px;
     cursor: pointer;
     font-size: 22px;
-    color: white;
+    color: #2D2D2D;
 }
 
 /* Labels */
@@ -237,6 +237,7 @@ label {
     font-weight: bold;
     margin-top: 5px;
     display: block;
+    color: #2D2D2D;
 }
 
 /* Inputs */
@@ -244,16 +245,16 @@ input {
     width: 100%;
     padding: 10px;
     margin: 5px 0 15px 0;
-    border: 1px solid #666;
-    background: #333;
-    color: white;
+    border: 1px solid #CCC;
+    background: #F5F5F5;
+    color: #2D2D2D;
     border-radius: 6px;
     font-size: 14px;
 }
 
 /* Botón */
 button {
-    background: #6a0dad;
+    background: #8A2BE2;
     color: white;
     padding: 12px;
     border: none;
@@ -268,45 +269,43 @@ button:hover {
     background: #5a0dad;
 }
 
-/* Estilos base para hacer la web responsive */
+
+/* Versión Móvil */
 @media (max-width: 768px) {
-    body {
-        position: relative;
-        width: 100%;
-        height: auto;
-        overflow-y: auto;
-        background-color: #181818;
+    /* Ajustar el tamaño del header */
+    header {
+        padding: 10px 15px;
     }
 
-    /* Botones del menú */
+    /* Ajustar el contenedor del menú */
+    .container {
+        top: 10px;
+        right: 10px;
+    }
+
+    /* Botón de perfil más compacto */
+    .btn {
+        min-width: 200px;
+        font-size: 10px;
+        padding: 12px 15px;
+    }
+
+    /* Dropdown ajustado */
+    .btn .dropdown {
+        width: auto;
+    }
+
+    /* Ajustar los botones */
     .buttons {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr); /* 2 columnas en móvil */
+        grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
         gap: 1rem;
-        margin-top: 10%;
-        width: 90%;
-        margin-inline: auto;
-        justify-content: center;
-        align-items: center;
+        margin-top: 12%;
     }
 
-    /* Estilos de los botones */
+    /* Tamaño de los botones en móvil */
     button.sq_button {
-        aspect-ratio: 1/1;
-        border: 0.3rem solid transparent;
         border-radius: 0.8rem;
-        background: #1E1E1E;
-        color: #E8E8E8;
-        display: grid;
-        place-content: center;
-        padding: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
-        font-size: 12px;
-        transition: all 0.1s ease-in-out;
-    }
-
-    button.sq_button:hover {
-        scale: 1.05;
+        font-size: 14px;
     }
 
     button.sq_button > i {
@@ -314,20 +313,24 @@ button:hover {
     }
 
     button.sq_button > span {
-        font-size: 14px;
+        font-size: 12px;
     }
 
-    /* Ajustes para el menú de usuario */
-    .container {
-        width: 100%;
-        display: flex;
-        justify-content: center;
+    /* Ajustar el modal */
+    .modal {
+        width: 90%;
+        max-width: 350px;
+        padding: 20px;
     }
 
-    .btn {
-        min-width: 180px;
-        font-size: 10px;
-        padding: 10px 15px;
-        margin-top: 10px;
+    /* Botón de cerrar más accesible */
+    .close {
+        font-size: 20px;
+    }
+
+    /* Inputs más compactos */
+    input {
+        padding: 8px;
+        font-size: 12px;
     }
 }
