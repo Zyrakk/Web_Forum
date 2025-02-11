@@ -270,11 +270,23 @@ body {
 }
 
 @media (max-width: 600px) {
-    /* Ajustar el botón del menú para que ocupe menos ancho */
+    /* Centrar el contenedor del header */
+    .container {
+      left: 50%;
+      transform: translateX(-50%);
+      right: auto;
+      width: 90%;
+      padding: 1rem;
+      box-sizing: border-box;
+      text-align: center;
+    }
+
+    /* Ajustar el botón del menú */
     .btn {
       font-size: 0.75rem;
       padding: 8px 10px;
       min-width: 180px;
+      margin: 0 auto;
     }
     .btn .dropdown li {
       padding: 8px 10px;
@@ -282,18 +294,31 @@ body {
       text-align: center;
     }
 
-    /* Mejorar el desplegable del header en móviles */
+    /* Mejorar el desplegable del header */
     .btn .dropdown {
-      left: 0;
-      right: 0;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%) translateY(5px);
+      background: #F2F2F7;
+      width: 90%;
+      max-width: 220px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
       padding: 0.5rem 0;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+      opacity: 0;
+      visibility: hidden;
+      transition: 0.3s ease;
+      list-style: none;
+      margin: 0;
+    }
+    .btn.open .dropdown {
+      opacity: 1;
+      visibility: visible;
     }
     .btn .dropdown a {
       text-align: center;
-    }
-    .btn.open .dropdown {
-      transform: translateY(5px); /* Menor desplazamiento en móviles */
+      display: block;
     }
 
     /* Ajustar el contenedor de botones para que no se desborde y centrar verticalmente */
