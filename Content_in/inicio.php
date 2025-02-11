@@ -26,15 +26,31 @@
         <nav class="container">
             <button class="btn">
                 <i class="fa-solid fa-hashtag"></i><?= $_SESSION['NombreUsuario'] ?>
-                <!--<img src="../sources/icon_profile_5.png" class="profile_img" alt="Profile Icon">-->
                 <ul class="dropdown">
-                    <li><a href="#"><i class="fa-solid fa-user"></i>&#160;&#160;&#160;Profile</a></li>
+                    <li><a href="#" onclick="openModal()"><i class="fa-solid fa-user"></i>&#160;&#160;&#160;Modify Data</a></li>
                     <li><a href="#" id="switch"><i class="fa-solid fa-moon"></i>&#160;&#160;&#160;Dark Mode</a></li>
                     <li><a href="../php/LogOut.php"><i class="fa-sharp fa-solid fa-right-from-bracket"></i>&#160;&#160;&#160;Log Out</a></li>
                 </ul>
             </button>
         </nav>
     </header>
+
+    <!-- Modal para cambiar usuario/contraseña -->
+    <div id="userModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Cambiar Usuario/Contraseña</h2>
+
+            <label for="username">Nuevo Usuario</label>
+            <input type="text" id="username" placeholder="Ingrese nuevo usuario">
+
+            <label for="password">Nueva Contraseña</label>
+            <input type="password" id="password" placeholder="Ingrese nueva contraseña">
+
+            <button onclick="updateCredentials()">Guardar Cambios</button>
+        </div>
+    </div>
+
     <!--Botones-->
     <div class="buttons">
       <button class="sq_button" onclick="location.href='../mybb'">
@@ -47,9 +63,9 @@
         <span>Metadata</span>
       </button>
 
-      <button class="sq_button">
+      <button class="sq_button" onclick="location.href='../py-to-uf2/index.html'">
         <i class="fa-light fa-tools"></i>
-        <span>Soon</span>
+        <span>Py-to-UF2</span>
       </button>
 
       <button class="sq_button">
@@ -69,6 +85,7 @@
     </div>
     <script type="text/javascript" src="../scripts/dark_switch.js"></script>
     <script type="text/javascript" src="../scripts/user_menu.js"></script>
+    <script type="text/javascript" src="../scripts/modal.js"></script>
 </body>
 </html>
 

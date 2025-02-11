@@ -196,3 +196,55 @@ body {
     display: block;
     font-size: 10px;
   }
+
+  /* Estilo del modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: #222;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    color: white;
+}
+
+/* Contenido del modal */
+.modal-content {
+    text-align: center;
+}
+
+/* Botón de cerrar */
+.close {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    color: white;
+}
+
+/* Inputs */
+input {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+    border: 1px solid #666;
+    background: #333;
+    color: white;
+    border-radius: 5px;
+}
+
+/* Botón */
+button {
+    background: #6a0dad;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
