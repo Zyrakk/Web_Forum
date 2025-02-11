@@ -298,8 +298,8 @@ body {
     .btn .dropdown {
       position: absolute;
       top: 100%;
-      left: 50%;
-      transform: translateX(-50%) translateY(5px);
+      left: 50% !important;
+      transform: translateX(-50%) translateY(5px) !important;
       background: #F2F2F7;
       width: 90%;
       max-width: 220px;
@@ -312,10 +312,12 @@ body {
       list-style: none;
       margin: 0;
     }
+
     .btn.open .dropdown {
       opacity: 1;
       visibility: visible;
     }
+
     .btn .dropdown a {
       text-align: center;
       display: block;
@@ -337,6 +339,7 @@ body {
     .sq_button i {
       font-size: 1.3rem;
     }
+    
     .sq_button span {
       font-size: 0.8rem;
     }
