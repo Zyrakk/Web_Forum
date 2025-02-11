@@ -283,7 +283,7 @@ body {
 
     /* Ajustar el botón del menú: centrado y posición relativa para el dropdown */
     .btn {
-      position: relative; /* Fundamental para posicionar el dropdown respecto al botón */
+      position: relative; /* Importante para que el dropdown se posicione respecto al botón */
       font-size: 0.75rem;
       padding: 8px 10px;
       min-width: 180px;
@@ -306,14 +306,16 @@ body {
       transition: opacity 0.3s ease, visibility 0.3s ease;
       z-index: 1000;
       list-style: none;
-    }
-    /* Cuando se active la clase .open, se muestra el dropdown */
-    .btn.open .dropdown {
-      opacity: 1;
-      visibility: visible;
+      pointer-events: none; /* Evita que se interactúe cuando está oculto */
     }
 
-    /* Estilos para los elementos del dropdown */
+    /* Cuando se active la clase .open, se forzará la visualización del dropdown */
+    .btn.open .dropdown {
+      opacity: 1 !important;
+      visibility: visible !important;
+      pointer-events: auto;
+    }
+
     .btn .dropdown li {
       padding: 8px 10px;
       font-size: 0.75rem;
