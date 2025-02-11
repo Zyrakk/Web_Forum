@@ -283,7 +283,7 @@ body {
 
     /* Ajustar el botón del menú: centrado y con posición relativa para el dropdown */
     .btn {
-      position: relative; /* Para que el dropdown se posicione relativo al botón */
+      position: relative; /* Para que el dropdown se posicione respecto al botón */
       font-size: 0.75rem;
       padding: 8px 10px;
       min-width: 180px;
@@ -295,7 +295,7 @@ body {
       text-align: center;
     }
 
-    /* Mejorar el desplegable del header para que se despliegue acorde al botón */
+    /* Mejorar el desplegable del header para que se alinee con el botón */
     .btn .dropdown {
       position: absolute;
       top: 100%;
@@ -312,6 +312,7 @@ body {
       transition: 0.3s ease;
       list-style: none;
       margin: 0;
+      z-index: 1000; /* Asegura que el dropdown aparezca sobre otros elementos */
     }
     .btn.open .dropdown {
       opacity: 1;
@@ -324,8 +325,8 @@ body {
 
     /* Ajustar el contenedor de botones para que no se desborde y centrar verticalmente */
     .buttons {
-      margin-top: 30%; /* Se incrementa el margen superior para bajar los botones */
-      width: calc(100% - 2rem); /* Se resta un margen horizontal total de 2rem */
+      margin-top: 30%; /* Incrementa el margen superior para bajar los botones */
+      width: calc(100% - 2rem); /* Resta un margen horizontal total de 2rem */
       padding: 0 1rem;           /* Padding interno para evitar que se peguen a los bordes */
       gap: 1rem;
       grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
