@@ -267,3 +267,67 @@ button {
 button:hover {
     background: #5a0dad;
 }
+
+/* Estilos base para hacer la web responsive */
+@media (max-width: 768px) {
+    body {
+        position: relative;
+        width: 100%;
+        height: auto;
+        overflow-y: auto;
+        background-color: #181818;
+    }
+
+    /* Botones del menú */
+    .buttons {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* 2 columnas en móvil */
+        gap: 1rem;
+        margin-top: 10%;
+        width: 90%;
+        margin-inline: auto;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Estilos de los botones */
+    button.sq_button {
+        aspect-ratio: 1/1;
+        border: 0.3rem solid transparent;
+        border-radius: 0.8rem;
+        background: #1E1E1E;
+        color: #E8E8E8;
+        display: grid;
+        place-content: center;
+        padding: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+        font-size: 12px;
+        transition: all 0.1s ease-in-out;
+    }
+
+    button.sq_button:hover {
+        scale: 1.05;
+    }
+
+    button.sq_button > i {
+        font-size: 24px;
+    }
+
+    button.sq_button > span {
+        font-size: 14px;
+    }
+
+    /* Ajustes para el menú de usuario */
+    .container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .btn {
+        min-width: 180px;
+        font-size: 10px;
+        padding: 10px 15px;
+        margin-top: 10px;
+    }
+}
