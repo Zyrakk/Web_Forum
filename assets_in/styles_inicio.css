@@ -269,69 +269,23 @@ body {
     background: #5a0dad;
 }
 
-
-
-/* Versión Móvil */
-@media (max-width: 768px) {
-    /* Ajustar el tamaño del header */
-    header {
-        padding: 10px 15px;
-    }
-
-    /* Ajustar el contenedor del menú */
-    .container {
-        top: 10px;
-        right: 10px;
-    }
-
-    /* Botón de perfil más compacto */
+@media (max-width: 600px) {
     .btn {
-        min-width: 200px;
-        font-size: 10px;
-        padding: 12px 15px;
+      font-size: 0.8rem;
+      padding: 8px 12px;
     }
-
-    /* Dropdown ajustado */
-    .btn .dropdown {
-        width: auto;
+    .btn .dropdown li {
+      padding: 8px 12px;
+      font-size: 0.8rem;
     }
-
-    /* Ajustar los botones */
     .buttons {
-        grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
-        gap: 1rem;
-        margin-top: 12%;
+      gap: 1rem;
+      padding: 1rem;
     }
-
-    /* Tamaño de los botones en móvil */
-    button.sq_button {
-        border-radius: 0.8rem;
-        font-size: 14px;
+    .sq_button i {
+      font-size: 1.3rem;
     }
-
-    button.sq_button > i {
-        font-size: 24px;
+    .sq_button span {
+      font-size: 0.9rem;
     }
-
-    button.sq_button > span {
-        font-size: 12px;
-    }
-
-    /* Ajustar el modal */
-    .modal {
-        width: 90%;
-        max-width: 350px;
-        padding: 20px;
-    }
-
-    /* Botón de cerrar más accesible */
-    .close {
-        font-size: 20px;
-    }
-
-    /* Inputs más compactos */
-    input {
-        padding: 8px;
-        font-size: 12px;
-    }
-}
+  }
