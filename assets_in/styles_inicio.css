@@ -197,7 +197,7 @@ body {
     font-size: 10px;
   }
 
-  /* Estilo del modal */
+/* Estilo del modal */
 .modal {
     display: none;
     position: fixed;
@@ -206,45 +206,64 @@ body {
     top: 50%;
     transform: translate(-50%, -50%);
     background: #222;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    width: 300px;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    width: 350px;
     color: white;
+    text-align: center;
 }
 
 /* Contenido del modal */
 .modal-content {
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;  /* Espacio entre elementos */
 }
 
 /* Botón de cerrar */
 .close {
     position: absolute;
-    right: 10px;
-    top: 5px;
+    right: 15px;
+    top: 10px;
     cursor: pointer;
-    font-size: 20px;
+    font-size: 22px;
     color: white;
+}
+
+/* Labels */
+label {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 5px;
+    display: block;
 }
 
 /* Inputs */
 input {
     width: 100%;
-    padding: 8px;
-    margin: 5px 0;
+    padding: 10px;
+    margin: 5px 0 15px 0;
     border: 1px solid #666;
     background: #333;
     color: white;
-    border-radius: 5px;
+    border-radius: 6px;
+    font-size: 14px;
 }
 
 /* Botón */
 button {
     background: #6a0dad;
     color: white;
-    padding: 10px;
+    padding: 12px;
     border: none;
-    border-radius: 5px;
+    border-radius: 6px;
     cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: #5a0dad;
 }
