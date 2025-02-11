@@ -270,65 +270,35 @@ body {
 }
 
 @media (max-width: 600px) {
-    /* Centrar el contenedor del header */
-    .container {
-      left: 50%;
-      transform: translateX(-50%);
-      right: auto;
-      width: 90%;
-      padding: 1rem;
-      box-sizing: border-box;
-      text-align: center;
-    }
-
-    /* Ajustar el botón del menú: centrado y posición relativa para el dropdown */
+    /* Ajustar el botón del menú para que ocupe menos ancho */
     .btn {
-      position: relative; /* Importante para que el dropdown se posicione respecto al botón */
       font-size: 0.75rem;
       padding: 8px 10px;
       min-width: 180px;
-      margin: 0 auto;
     }
-
-    /* Estilos para el dropdown del header */
-    .btn .dropdown {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      margin-top: 5px;
-      background: #F2F2F7;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-      padding: 0.5rem 0;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.3s ease, visibility 0.3s ease;
-      z-index: 1000;
-      list-style: none;
-      pointer-events: none; /* Evita que se interactúe cuando está oculto */
-    }
-
-    /* Cuando se active la clase .open, se forzará la visualización del dropdown */
-    .btn.open .dropdown {
-      opacity: 1 !important;
-      visibility: visible !important;
-      pointer-events: auto;
-    }
-
     .btn .dropdown li {
       padding: 8px 10px;
       font-size: 0.75rem;
       text-align: center;
     }
+
+    /* Mejorar el desplegable del header en móviles */
+    .btn .dropdown {
+      left: 0;
+      right: 0;
+      padding: 0.5rem 0;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    }
     .btn .dropdown a {
       text-align: center;
-      display: block;
+    }
+    .btn.open .dropdown {
+      transform: translateY(5px); /* Menor desplazamiento en móviles */
     }
 
     /* Ajustar el contenedor de botones para que no se desborde y centrar verticalmente */
     .buttons {
-      margin-top: 30%; /* Incrementa el margen superior para bajar los botones */
+      margin-top: 30%; /* Se incrementa el margen superior para bajar los botones */
       width: calc(100% - 2rem); /* Se resta un margen horizontal total de 2rem */
       padding: 0 1rem;           /* Padding interno para evitar que se peguen a los bordes */
       gap: 1rem;
