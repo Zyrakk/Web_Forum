@@ -14,11 +14,11 @@ function updateCredentials() {
     const password = document.getElementById("password").value.trim();
 
     if (!username && !password) {
-        alert("Introduce un nuevo usuario o contraseña.");
+        alert("Enter new User or Password");
         return;
     }
 
-    fetch("/Config/update_credentials.php", {
+    fetch("/php/update_credentials.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password })
@@ -26,7 +26,7 @@ function updateCredentials() {
     .then(response => response.json())
     .then(data => {
         if (data.success) {
-            alert("Cambios guardados correctamente.");
+            alert("Changes updated successfully.");
             closeModal();
         } else {
             alert("Error: " + data.detail);

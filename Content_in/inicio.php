@@ -39,12 +39,12 @@
     <div id="userModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
-            <h2>Cambiar Usuario/Contraseña</h2>
+            <h2>Change User/Pass</h2>
 
-            <label for="username">Nuevo Usuario</label>
+            <label for="username">New User</label>
             <input type="text" id="username" placeholder="Ingrese nuevo usuario">
 
-            <label for="password">Nueva Contraseña</label>
+            <label for="password">New Password</label>
             <input type="password" id="password" placeholder="Ingrese nueva contraseña">
 
             <button onclick="updateCredentials()">Guardar Cambios</button>
