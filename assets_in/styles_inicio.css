@@ -270,7 +270,7 @@ body {
 }
 
 @media (max-width: 600px) {
-    /* Reducir tamaño y padding del botón de perfil */
+    /* Ajustar el botón del menú para que ocupe menos ancho */
     .btn {
       font-size: 0.75rem;
       padding: 8px 10px;
@@ -281,16 +281,19 @@ body {
       font-size: 0.75rem;
     }
 
-    /* Ajustar el contenedor de botones para ocupar mejor el ancho disponible */
+    /* Ajustar el contenedor de botones para que no se desborde */
     .buttons {
       margin-top: 10%;
-      padding: 1rem;
+      width: calc(100% - 2rem); /* Se resta un margen horizontal total de 2rem */
+      padding: 0 1rem;           /* Padding interno para evitar que se peguen a los bordes */
       gap: 1rem;
-      /* Forzar columnas mínimas de 90px para asegurar una distribución adecuada */
-      grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+      box-sizing: border-box;
+      margin-left: auto;
+      margin-right: auto;
     }
 
-    /* Reducir el tamaño de los iconos y textos en los botones principales */
+    /* Reducir tamaños de iconos y textos para los botones principales */
     .sq_button i {
       font-size: 1.3rem;
     }
@@ -298,9 +301,10 @@ body {
       font-size: 0.8rem;
     }
 
-    /* Optimizar el modal para pantallas pequeñas */
+    /* Ajustar el modal en dispositivos pequeños */
     .modal {
       width: 90%;
       padding: 20px;
     }
   }
+
