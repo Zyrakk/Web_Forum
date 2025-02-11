@@ -232,7 +232,7 @@ body {
 }
 
 /* Labels */
-label {
+.modal label {
     font-size: 16px;
     font-weight: bold;
     margin-top: 5px;
@@ -241,7 +241,7 @@ label {
 }
 
 /* Inputs */
-input {
+.modal input {
     width: 100%;
     padding: 10px;
     margin: 5px 0 15px 0;
@@ -252,8 +252,8 @@ input {
     font-size: 14px;
 }
 
-/* Botón */
-button {
+/* Específicamente para los botones dentro del modal */
+.modal button {
     background: #8A2BE2;
     color: white;
     padding: 12px;
@@ -265,9 +265,10 @@ button {
     transition: background 0.3s ease;
 }
 
-button:hover {
+.modal button:hover {
     background: #5a0dad;
 }
+
 
 
 /* Versión Móvil */
