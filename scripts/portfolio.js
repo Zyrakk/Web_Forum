@@ -6,7 +6,7 @@ async function fetchGitHubRepo() {
 fetchGitHubRepo();
 
 async function fetchGitHubRepo2() {
-    const response = await fetch("https://api.github.com/repos/Zyrakk/py-to-uf2");
+    const response = await fetch("https://api.github.com/repos/Zyrakk/video-server");
     const data = await response.json();
     document.getElementById("repo-description_2").innerText = data.description || "Sin descripción disponible.";
 }
