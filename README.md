@@ -23,6 +23,9 @@ Este es un proyecto de una página web con sistema de inicio de sesión y regist
    git clone https://github.com/Zyrakk/Web_Forum.git
    ```
 2. Configura la base de datos y el archivo de conexión.
+   ```
+   sudo apt install nginx php php-fpm php-mysql php-mbstring php-curl php-xml php-zip php-gd php-cli php-intl unzip git mariadb-server mariadb-client -y
+   ```
 3. Asegúrate de establecer permisos adecuados en los archivos y directorios necesarios.
 4. Accede a la página desde tu navegador y sigue el proceso de configuración inicial.
 
