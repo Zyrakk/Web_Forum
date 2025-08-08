@@ -834,6 +834,33 @@
     let ws = null;
     let reconnectDelay = 1000;
 
+    // Confetti on entry + detection of new completions
+    let initialConfettiShown = false;
+    let completedIds = new Set();
+
+    const computeCompletedIds = (list) =>
+    new Set(
+        (list || [])
+        .filter((t) => computePct(t) >= 100)
+        .map((t) => t.id)
+        .filter(Boolean)
+    );
+
+    const hasNewCompletion = (prevSet, nextSet) => {
+    for (const id of nextSet) {
+        if (!prevSet.has(id)) return true;
+    }
+    return false;
+    };
+
+    const confettiOnEntryIfCompleted = () => {
+    if (initialConfettiShown) return;
+    if (tasks.some((t) => computePct(t) >= 100)) {
+        initialConfettiShown = true;
+        Confetti.celebrate(); // solo confeti (sin toast)
+    }
+    };
+
     const els = {
         grid: document.getElementById("taskGrid"),
         editModal: document.getElementById("editModal"),
@@ -891,34 +918,64 @@
     // Realtime WS
     function connectWS() {
         try {
-        const proto = location.protocol === "https:" ? "wss" : "ws";
-        ws = new WebSocket(`${proto}://${location.host}/ws`);
-        ws.onopen = () => {
+            const proto = location.protocol === "https:" ? "wss" : "ws";
+            ws = new WebSocket(`${proto}://${location.host}/ws`);
+
+            ws.onopen = () => {
             reconnectDelay = 1000;
-        };
-        ws.onmessage = (ev) => {
+            };
+
+            ws.onmessage = (ev) => {
             try {
-            const msg = JSON.parse(ev.data);
-            if (!msg) return;
-            if (msg.type === "init" || msg.type === "set") {
-                if (msg.version && msg.version <= serverVersion) return;
-                serverVersion = msg.version || serverVersion + 1;
+                const msg = JSON.parse(ev.data);
+                if (!msg) return;
+
+                // Guarda el estado de completadas antes de aplicar el nuevo estado
+                const prevCompleted = new Set(completedIds);
+
+                if (msg.type === "init" || msg.type === "set") {
+                if (msg.type === "set" && msg.version && msg.version <= serverVersion) {
+                    return; // evita versiones antiguas
+                }
+
+                serverVersion =
+                    msg.type === "set"
+                    ? msg.version || serverVersion + 1
+                    : msg.version || serverVersion;
+
                 tasks = Array.isArray(msg.tasks) ? msg.tasks : [];
                 render();
+
+                const nextCompleted = computeCompletedIds(tasks);
+
+                if (msg.type === "init") {
+                    // Confeti al entrar si ya hay completadas
+                    completedIds = nextCompleted;
+                    confettiOnEntryIfCompleted();
+                } else if (msg.type === "set") {
+                    // Confeti si aparecen nuevas completadas en tiempo real
+                    if (hasNewCompletion(prevCompleted, nextCompleted)) {
+                    Confetti.celebrate();
+                    }
+                    completedIds = nextCompleted;
+                }
+                }
+            } catch {
+                /* noop */
             }
-            } catch {}
-        };
-        ws.onclose = () => {
+            };
+
+            ws.onclose = () => {
             setTimeout(connectWS, reconnectDelay);
             reconnectDelay = Math.min(reconnectDelay * 2, 15000);
-        };
-        ws.onerror = () => {
+            };
+            ws.onerror = () => {
             try {
-            ws.close();
+                ws.close();
             } catch {}
-        };
+            };
         } catch {
-        setTimeout(connectWS, reconnectDelay);
+            setTimeout(connectWS, reconnectDelay);
         }
     }
 
@@ -1374,16 +1431,21 @@
 
     async function boot() {
         try {
-        const data = await API.fetch();
-        serverVersion = data.version || 0;
-        tasks = Array.isArray(data.tasks) ? data.tasks : [];
-        render();
+            const data = await API.fetch();
+            serverVersion = data.version || 0;
+            tasks = Array.isArray(data.tasks) ? data.tasks : [];
+            render();
         } catch (e) {
-        tasks = [];
-        render();
+            tasks = [];
+            render();
         }
+
+        // confeti al entrar si ya hay tareas completadas
+        completedIds = computeCompletedIds(tasks);
+        confettiOnEntryIfCompleted();
+
         connectWS();
-    }
+        }
 
     async function saveAll(msg = "Saved") {
         if (!isAdmin()) return;
