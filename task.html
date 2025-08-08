@@ -1,21 +1,19 @@
 <!doctype html>
-<html lang="es">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta
       name="viewport"
-      content="width=device-width, initial-scale=1, maximum-scale=1"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
     />
     <title>To‑Do Pulse — Pixel Edition</title>
 
-    <!-- Fuentes pixel: Press Start 2P (UI) + VT323 (texto) -->
     <link
       href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap"
       rel="stylesheet"
     />
 
     <style>
-      /* =================== THEME PIXEL =================== */
       :root {
         --bg: #05090a;
         --grid: #0a1416;
@@ -26,9 +24,11 @@
         --warn: #ffd54d;
         --ok: #34d399;
         --danger: #ff5178;
-        --text: #c6ffe9;
-        --muted: #7ce0c1;
-        --pixel: 8px; /* unidad de esquina pixelada */
+        --text: #cfffe9;
+        --muted: #86e8c9;
+        --px: 8px; /* pixel corner */
+        --pad: clamp(14px, 4vw, 24px);
+        --gap: clamp(10px, 3.2vw, 16px);
       }
 
       *,
@@ -53,13 +53,12 @@
         cursor: crosshair;
       }
 
-      /* Rejilla 3D tipo “sala arcade” */
+      /* 3D floor grid */
       .grid3d {
         position: fixed;
         inset: 0;
         z-index: 0;
-        background:
-          radial-gradient(1200px 700px at 50% -10%, #072c2a 0%, transparent 60%),
+        background: radial-gradient(1200px 700px at 50% -10%, #072c2a 0%, transparent 60%),
           radial-gradient(1200px 900px at 120% 120%, #140a24 0%, transparent 50%);
       }
       .grid3d::before,
@@ -68,9 +67,9 @@
         position: absolute;
         left: 50%;
         bottom: -10%;
-        width: 200vw;
-        height: 160vh;
-        transform: translateX(-50%) perspective(800px) rotateX(64deg);
+        width: 220vw;
+        height: 180vh;
+        transform: translateX(-50%) perspective(820px) rotateX(64deg);
         background-image: repeating-linear-gradient(
             to right,
             var(--grid) 0 2px,
@@ -85,11 +84,10 @@
       }
       .grid3d::after {
         opacity: 0.35;
-        transform: translateX(-50%) perspective(900px) rotateX(66deg)
-          translateY(20px);
+        transform: translateX(-50%) perspective(880px) rotateX(66deg) translateY(22px);
       }
 
-      /* Scanlines CRT + suave parpadeo */
+      /* CRT scanlines */
       .scanlines {
         position: fixed;
         inset: 0;
@@ -111,38 +109,46 @@
         }
         50% {
           opacity: 0.75;
-          filter: hue-rotate(-8deg) saturate(1.05);
+          filter: hue-rotate(-6deg) saturate(1.05);
         }
       }
 
-      /* Contenedor principal */
+      /* Container */
       .container {
         position: relative;
         z-index: 10;
         max-width: 1280px;
         margin: 0 auto;
-        padding: 24px;
+        padding: var(--pad);
+        padding-left: calc(var(--pad) + env(safe-area-inset-left));
+        padding-right: calc(var(--pad) + env(safe-area-inset-right));
       }
 
-      /* Marca superior estilo consola */
+      /* Sticky header */
       header {
+        position: sticky;
+        top: 0;
+        z-index: 30;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 16px;
-        margin: 8px 0 22px 0;
-        font-family: "Press Start 2P", system-ui, monospace;
-        text-transform: uppercase;
+        gap: 12px;
+        margin: 0 0 calc(var(--gap) + 4px) 0;
+        padding: 10px 0;
+        background: linear-gradient(180deg, rgba(5, 12, 11, 0.9), rgba(5, 9, 10, 0.6));
+        backdrop-filter: blur(2px);
+        border-bottom: 2px solid rgba(0, 255, 170, 0.2);
       }
+
       .brand {
         display: flex;
         align-items: center;
-        gap: 16px;
+        gap: 12px;
         filter: drop-shadow(0 0 12px rgba(0, 255, 170, 0.25));
       }
       .logo {
-        width: 44px;
-        height: 44px;
+        width: clamp(34px, 9vw, 44px);
+        height: clamp(34px, 9vw, 44px);
         display: grid;
         place-items: center;
         background: conic-gradient(
@@ -154,27 +160,26 @@
           var(--ui)
         );
         clip-path: polygon(
-          0 var(--pixel),
-          var(--pixel) var(--pixel),
-          var(--pixel) 0,
-          calc(100% - var(--pixel)) 0,
-          calc(100% - var(--pixel)) var(--pixel),
-          100% var(--pixel),
-          100% calc(100% - var(--pixel)),
-          calc(100% - var(--pixel)) calc(100% - var(--pixel)),
-          calc(100% - var(--pixel)) 100%,
-          var(--pixel) 100%,
-          var(--pixel) calc(100% - var(--pixel)),
-          0 calc(100% - var(--pixel))
+          0 var(--px),
+          var(--px) var(--px),
+          var(--px) 0,
+          calc(100% - var(--px)) 0,
+          calc(100% - var(--px)) var(--px),
+          100% var(--px),
+          100% calc(100% - var(--px)),
+          calc(100% - var(--px)) calc(100% - var(--px)),
+          calc(100% - var(--px)) 100%,
+          var(--px) 100%,
+          var(--px) calc(100% - var(--px)),
+          0 calc(100% - var(--px))
         );
         box-shadow: 0 0 20px rgba(0, 255, 170, 0.35);
         animation: spin 10s linear infinite;
       }
       .logo::after {
         content: "★";
-        font-size: 18px;
+        font-size: clamp(14px, 3.2vw, 18px);
         color: #04150e;
-        text-shadow: 0 2px 0 rgba(0, 0, 0, 0.3);
       }
       @keyframes spin {
         to {
@@ -183,7 +188,8 @@
       }
       h1 {
         margin: 0;
-        font-size: clamp(18px, 2.8vw, 28px);
+        font-family: "Press Start 2P", system-ui, monospace;
+        font-size: clamp(14px, 3.8vw, 28px);
         letter-spacing: 1.2px;
         background: linear-gradient(90deg, #d1ffe9, #9cf7ff, #e1c6ff);
         -webkit-background-clip: text;
@@ -194,33 +200,8 @@
       .header-actions {
         display: flex;
         align-items: center;
-        gap: 10px;
-        font-family: "Press Start 2P", monospace;
-      }
-
-      .pill {
-        display: inline-flex;
-        align-items: center;
         gap: 8px;
-        padding: 10px 12px;
-        font-size: 10px;
-        color: var(--muted);
-        border: 2px solid rgba(0, 255, 170, 0.35);
-        background: #071412;
-        clip-path: polygon(
-          0 var(--pixel),
-          var(--pixel) var(--pixel),
-          var(--pixel) 0,
-          calc(100% - var(--pixel)) 0,
-          calc(100% - var(--pixel)) var(--pixel),
-          100% var(--pixel),
-          100% calc(100% - var(--pixel)),
-          calc(100% - var(--pixel)) calc(100% - var(--pixel)),
-          calc(100% - var(--pixel)) 100%,
-          var(--pixel) 100%,
-          var(--pixel) calc(100% - var(--pixel)),
-          0 calc(100% - var(--pixel))
-        );
+        flex-wrap: nowrap;
       }
 
       .btn {
@@ -229,9 +210,9 @@
         color: #04150e;
         font-weight: 700;
         border-radius: 0;
-        padding: 12px 14px;
+        padding: 10px 12px;
         font-family: "Press Start 2P", monospace;
-        font-size: 11px;
+        font-size: clamp(9px, 2.4vw, 11px);
         background: linear-gradient(90deg, var(--ui), var(--ui-2), var(--ui-3));
         background-size: 200% 100%;
         animation: sheen 9s ease-in-out infinite;
@@ -239,20 +220,21 @@
         box-shadow: 0 0 0 2px rgba(0, 255, 170, 0.45),
           0 8px 24px rgba(0, 171, 255, 0.24);
         clip-path: polygon(
-          0 var(--pixel),
-          var(--pixel) var(--pixel),
-          var(--pixel) 0,
-          calc(100% - var(--pixel)) 0,
-          calc(100% - var(--pixel)) var(--pixel),
-          100% var(--pixel),
-          100% calc(100% - var(--pixel)),
-          calc(100% - var(--pixel)) calc(100% - var(--pixel)),
-          calc(100% - var(--pixel)) 100%,
-          var(--pixel) 100%,
-          var(--pixel) calc(100% - var(--pixel)),
-          0 calc(100% - var(--pixel))
+          0 var(--px),
+          var(--px) var(--px),
+          var(--px) 0,
+          calc(100% - var(--px)) 0,
+          calc(100% - var(--px)) var(--px),
+          100% var(--px),
+          100% calc(100% - var(--px)),
+          calc(100% - var(--px)) calc(100% - var(--px)),
+          calc(100% - var(--px)) 100%,
+          var(--px) 100%,
+          var(--px) calc(100% - var(--px)),
+          0 calc(100% - var(--px))
         );
         transition: transform 0.15s ease, filter 0.15s ease;
+        white-space: nowrap;
       }
       .btn:hover {
         transform: translateY(-2px);
@@ -272,57 +254,81 @@
         }
       }
 
-      /* GRID de tarjetas */
+      /* Content grid */
       .grid {
         display: grid;
         grid-template-columns: repeat(12, 1fr);
-        gap: 16px;
+        gap: var(--gap);
       }
-      @media (max-width: 980px) {
+      @media (max-width: 1024px) {
         .grid {
           grid-template-columns: repeat(6, 1fr);
         }
       }
-      @media (max-width: 640px) {
+      @media (max-width: 680px) {
         .grid {
           grid-template-columns: repeat(1, 1fr);
         }
       }
 
-      /* Tarjeta con esquina pixelada */
+      /* Pixel card */
       .card {
         grid-column: span 4;
         position: relative;
         background: #071412;
-        border: 2px solid rgba(0, 255, 170, 0.35);
+        border: 2px solid rgba(0, 255, 170, 0.25);
         clip-path: polygon(
-          0 var(--pixel),
-          var(--pixel) var(--pixel),
-          var(--pixel) 0,
-          calc(100% - var(--pixel)) 0,
-          calc(100% - var(--pixel)) var(--pixel),
-          100% var(--pixel),
-          100% calc(100% - var(--pixel)),
-          calc(100% - var(--pixel)) calc(100% - var(--pixel)),
-          calc(100% - var(--pixel)) 100%,
-          var(--pixel) 100%,
-          var(--pixel) calc(100% - var(--pixel)),
-          0 calc(100% - var(--pixel))
+          0 var(--px),
+          var(--px) var(--px),
+          var(--px) 0,
+          calc(100% - var(--px)) 0,
+          calc(100% - var(--px)) var(--px),
+          100% var(--px),
+          100% calc(100% - var(--px)),
+          calc(100% - var(--px)) calc(100% - var(--px)),
+          calc(100% - var(--px)) 100%,
+          var(--px) 100%,
+          var(--px) calc(100% - var(--px)),
+          0 calc(100% - var(--px))
         );
-        box-shadow: 0 0 0 2px rgba(0, 255, 170, 0.1) inset,
+        box-shadow: 0 0 0 2px rgba(0, 255, 170, 0.08) inset,
           0 12px 40px rgba(0, 0, 0, 0.55);
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        transition: transform 0.18s ease, box-shadow 0.18s ease;
+        padding: 0; /* for accent line */
       }
       .card:hover {
         transform: translateY(-4px);
-        box-shadow: 0 0 0 2px rgba(0, 255, 170, 0.18) inset,
+        box-shadow: 0 0 0 2px rgba(0, 255, 170, 0.14) inset,
           0 18px 60px rgba(0, 0, 0, 0.7);
       }
+      .card::before {
+        /* subtle color accent per task */
+        content: "";
+        position: absolute;
+        left: -2px;
+        right: -2px;
+        top: -2px;
+        height: 4px;
+        background: linear-gradient(90deg, var(--c1, var(--ui)), var(--c2, var(--ui-2)));
+        opacity: 0.9;
+      }
       .card .inner {
-        padding: 16px;
+        padding: 14px 14px 16px 14px;
         display: flex;
         flex-direction: column;
-        gap: 12px;
+        gap: 10px;
+      }
+      @media (max-width: 680px) {
+        .card {
+          grid-column: span 1;
+        }
+        :root {
+          --px: 6px;
+        }
+        .card .inner {
+          padding: 12px;
+          gap: 8px;
+        }
       }
 
       .top {
@@ -333,14 +339,14 @@
       }
       .title {
         font-family: "Press Start 2P", monospace;
-        font-size: 13px;
+        font-size: clamp(12px, 3.8vw, 14px);
         line-height: 1.3;
         color: #d1ffe9;
-        text-shadow: 0 0 12px rgba(0, 255, 170, 0.25);
+        text-shadow: 0 0 10px rgba(0, 255, 170, 0.22);
       }
       .desc {
         color: var(--muted);
-        font-size: 18px; /* VT323 es grande; esto es cómodo */
+        font-size: clamp(16px, 4.8vw, 18px);
         line-height: 1.2;
       }
 
@@ -352,23 +358,23 @@
       }
       .chip {
         font-family: "Press Start 2P", monospace;
-        font-size: 10px;
+        font-size: clamp(9px, 2.6vw, 10px);
         color: #04150e;
         padding: 8px 10px;
         background: linear-gradient(90deg, var(--ui), var(--ui-2));
         clip-path: polygon(
-          0 var(--pixel),
-          var(--pixel) var(--pixel),
-          var(--pixel) 0,
-          calc(100% - var(--pixel)) 0,
-          calc(100% - var(--pixel)) var(--pixel),
-          100% var(--pixel),
-          100% calc(100% - var(--pixel)),
-          calc(100% - var(--pixel)) calc(100% - var(--pixel)),
-          calc(100% - var(--pixel)) 100%,
-          var(--pixel) 100%,
-          var(--pixel) calc(100% - var(--pixel)),
-          0 calc(100% - var(--pixel))
+          0 var(--px),
+          var(--px) var(--px),
+          var(--px) 0,
+          calc(100% - var(--px)) 0,
+          calc(100% - var(--px)) var(--px),
+          100% var(--px),
+          100% calc(100% - var(--px)),
+          calc(100% - var(--px)) calc(100% - var(--px)),
+          calc(100% - var(--px)) 100%,
+          var(--px) 100%,
+          var(--px) calc(100% - var(--px)),
+          0 calc(100% - var(--px))
         );
       }
       .chip.manual {
@@ -383,7 +389,7 @@
         align-items: center;
         gap: 6px;
         color: var(--muted);
-        font-size: 12px;
+        font-size: clamp(11px, 3.6vw, 12px);
         padding: 6px 8px;
         border: 2px dashed rgba(0, 255, 170, 0.35);
         background: #06100e;
@@ -414,7 +420,7 @@
         bottom: -2px;
       }
 
-      /* Progreso 8-bit con animación por pasos */
+      /* 8‑bit progress */
       .progress {
         position: relative;
         height: 16px;
@@ -422,26 +428,25 @@
         background: #06100e;
         overflow: hidden;
         clip-path: polygon(
-          0 var(--pixel),
-          var(--pixel) var(--pixel),
-          var(--pixel) 0,
-          calc(100% - var(--pixel)) 0,
-          calc(100% - var(--pixel)) var(--pixel),
-          100% var(--pixel),
-          100% calc(100% - var(--pixel)),
-          calc(100% - var(--pixel)) calc(100% - var(--pixel)),
-          calc(100% - var(--pixel)) 100%,
-          var(--pixel) 100%,
-          var(--pixel) calc(100% - var(--pixel)),
-          0 calc(100% - var(--pixel))
+          0 var(--px),
+          var(--px) var(--px),
+          var(--px) 0,
+          calc(100% - var(--px)) 0,
+          calc(100% - var(--px)) var(--px),
+          100% var(--px),
+          100% calc(100% - var(--px)),
+          calc(100% - var(--px)) calc(100% - var(--px)),
+          calc(100% - var(--px)) 100%,
+          var(--px) 100%,
+          var(--px) calc(100% - var(--px)),
+          0 calc(100% - var(--px))
         );
       }
       .progress-fill {
         position: absolute;
         inset: 0;
         width: var(--w, 0%);
-        background:
-          repeating-linear-gradient(
+        background: repeating-linear-gradient(
             135deg,
             rgba(255, 255, 255, 0.14) 0 6px,
             rgba(255, 255, 255, 0) 6px 14px
@@ -465,7 +470,7 @@
         align-items: center;
         justify-content: space-between;
         font-family: "Press Start 2P", monospace;
-        font-size: 10px;
+        font-size: clamp(9px, 2.6vw, 10px);
         color: var(--muted);
         margin-top: 6px;
       }
@@ -482,21 +487,21 @@
         color: var(--text);
         padding: 8px 10px;
         font-family: "Press Start 2P", monospace;
-        font-size: 10px;
+        font-size: clamp(9px, 2.6vw, 10px);
         cursor: pointer;
         clip-path: polygon(
-          0 var(--pixel),
-          var(--pixel) var(--pixel),
-          var(--pixel) 0,
-          calc(100% - var(--pixel)) 0,
-          calc(100% - var(--pixel)) var(--pixel),
-          100% var(--pixel),
-          100% calc(100% - var(--pixel)),
-          calc(100% - var(--pixel)) calc(100% - var(--pixel)),
-          calc(100% - var(--pixel)) 100%,
-          var(--pixel) 100%,
-          var(--pixel) calc(100% - var(--pixel)),
-          0 calc(100% - var(--pixel))
+          0 var(--px),
+          var(--px) var(--px),
+          var(--px) 0,
+          calc(100% - var(--px)) 0,
+          calc(100% - var(--px)) var(--px),
+          100% var(--px),
+          100% calc(100% - var(--px)),
+          calc(100% - var(--px)) calc(100% - var(--px)),
+          calc(100% - var(--px)) 100%,
+          var(--px) 100%,
+          var(--px) calc(100% - var(--px)),
+          0 calc(100% - var(--px))
         );
         transition: transform 0.15s ease;
       }
@@ -510,15 +515,15 @@
 
       .fab {
         position: fixed;
-        right: 20px;
-        bottom: 20px;
+        right: calc(16px + env(safe-area-inset-right));
+        bottom: calc(16px + env(safe-area-inset-bottom));
         z-index: 50;
       }
       .fab button {
         border: 0;
         color: #04150e;
         font-family: "Press Start 2P", monospace;
-        font-size: 11px;
+        font-size: clamp(10px, 3vw, 11px);
         padding: 14px 16px;
         background: linear-gradient(90deg, var(--ui), var(--ui-2), var(--ui-3));
         cursor: pointer;
@@ -526,29 +531,28 @@
           0 10px 30px rgba(0, 171, 255, 0.24),
           0 0 100px rgba(0, 255, 170, 0.25);
         clip-path: polygon(
-          0 var(--pixel),
-          var(--pixel) var(--pixel),
-          var(--pixel) 0,
-          calc(100% - var(--pixel)) 0,
-          calc(100% - var(--pixel)) var(--pixel),
-          100% var(--pixel),
-          100% calc(100% - var(--pixel)),
-          calc(100% - var(--pixel)) calc(100% - var(--pixel)),
-          calc(100% - var(--pixel)) 100%,
-          var(--pixel) 100%,
-          var(--pixel) calc(100% - var(--pixel)),
-          0 calc(100% - var(--pixel))
+          0 var(--px),
+          var(--px) var(--px),
+          var(--px) 0,
+          calc(100% - var(--px)) 0,
+          calc(100% - var(--px)) var(--px),
+          100% var(--px),
+          100% calc(100% - var(--px)),
+          calc(100% - var(--px)) calc(100% - var(--px)),
+          calc(100% - var(--px)) 100%,
+          var(--px) 100%,
+          var(--px) calc(100% - var(--px)),
+          0 calc(100% - var(--px))
         );
       }
       .fab .hint {
         color: var(--muted);
-        font-size: 12px;
+        font-size: 14px;
         margin-top: 6px;
         text-align: right;
-        font-family: "VT323", monospace;
       }
 
-      /* MODAL Editor (pixel window) */
+      /* Modal */
       .modal {
         position: fixed;
         inset: 0;
@@ -564,31 +568,31 @@
       }
       .modal-card {
         width: 100%;
-        max-width: 600px;
+        max-width: min(640px, 92vw);
         background: #06100e;
         border: 2px solid rgba(0, 255, 170, 0.45);
         clip-path: polygon(
-          0 var(--pixel),
-          var(--pixel) var(--pixel),
-          var(--pixel) 0,
-          calc(100% - var(--pixel)) 0,
-          calc(100% - var(--pixel)) var(--pixel),
-          100% var(--pixel),
-          100% calc(100% - var(--pixel)),
-          calc(100% - var(--pixel)) calc(100% - var(--pixel)),
-          calc(100% - var(--pixel)) 100%,
-          var(--pixel) 100%,
-          var(--pixel) calc(100% - var(--pixel)),
-          0 calc(100% - var(--pixel))
+          0 var(--px),
+          var(--px) var(--px),
+          var(--px) 0,
+          calc(100% - var(--px)) 0,
+          calc(100% - var(--px)) var(--px),
+          100% var(--px),
+          100% calc(100% - var(--px)),
+          calc(100% - var(--px)) calc(100% - var(--px)),
+          calc(100% - var(--px)) 100%,
+          var(--px) 100%,
+          var(--px) calc(100% - var(--px)),
+          0 calc(100% - var(--px))
         );
         box-shadow: 0 0 0 3px rgba(0, 255, 170, 0.12) inset,
           0 20px 60px rgba(0, 0, 0, 0.6);
-        padding: 18px;
+        padding: 16px;
       }
       .modal-card h3 {
         margin: 0 0 12px 0;
         font-family: "Press Start 2P", monospace;
-        font-size: 16px;
+        font-size: clamp(14px, 4.6vw, 16px);
         color: #d1ffe9;
       }
       .form {
@@ -607,7 +611,7 @@
       }
       label {
         font-family: "Press Start 2P", monospace;
-        font-size: 10px;
+        font-size: clamp(9px, 2.6vw, 10px);
         color: var(--muted);
         display: block;
         margin-bottom: 6px;
@@ -624,7 +628,7 @@
         background: #071412;
         border: 2px solid rgba(0, 255, 170, 0.35);
         font-family: "VT323", monospace;
-        font-size: 20px;
+        font-size: clamp(18px, 5.5vw, 20px);
       }
       textarea {
         min-height: 90px;
@@ -655,7 +659,7 @@
 
       .countdown {
         font-family: "Press Start 2P", monospace;
-        font-size: 10px;
+        font-size: clamp(9px, 2.6vw, 10px);
         color: var(--muted);
       }
 
@@ -669,13 +673,13 @@
       .toast {
         position: fixed;
         left: 50%;
-        bottom: 18px;
+        bottom: calc(18px + env(safe-area-inset-bottom));
         transform: translateX(-50%);
         background: #06100e;
         border: 2px solid rgba(0, 255, 170, 0.45);
         padding: 12px 16px;
         font-family: "Press Start 2P", monospace;
-        font-size: 11px;
+        font-size: clamp(10px, 3vw, 11px);
         display: none;
         z-index: 120;
       }
@@ -683,7 +687,6 @@
         display: block;
       }
 
-      /* Confetti canvas overlay (pixel squares) */
       #confettiCanvas {
         position: fixed;
         inset: 0;
@@ -694,7 +697,6 @@
         image-rendering: pixelated;
       }
 
-      /* Enlaces admin/viewer */
       a.btn {
         text-decoration: none;
         display: inline-flex;
@@ -716,8 +718,6 @@
         </div>
 
         <div class="header-actions">
-          <span class="pill" id="legend">Auto: tiempo • Manual: slider</span>
-
           <a class="btn secondary" id="adminLink" href="/admin/task.html">
             Admin
           </a>
@@ -730,40 +730,40 @@
       <div class="grid" id="taskGrid"></div>
 
       <div class="fab admin-only">
-        <button id="addTaskBtn">+ Nueva tarea</button>
-        <div class="hint">Arrastra para reordenar</div>
+        <button id="addTaskBtn">+ New task</button>
+        <div class="hint">Drag to reorder</div>
       </div>
     </div>
 
-    <!-- Modal Editor -->
+    <!-- Editor Modal -->
     <div class="modal" id="editModal" aria-hidden="true">
       <div class="modal-card" role="dialog" aria-modal="true">
-        <h3 id="editorTitle">Crear / Editar tarea</h3>
+        <h3 id="editorTitle">Create / Edit task</h3>
         <div class="form">
           <div class="row">
             <div>
-              <label>Título</label>
-              <input type="text" id="taskTitle" placeholder="Ej: Landing" />
+              <label>Title</label>
+              <input type="text" id="taskTitle" placeholder="e.g., Landing" />
             </div>
             <div>
-              <label>Modo de progreso</label>
+              <label>Progress mode</label>
               <select id="taskMode">
                 <option value="manual">Manual</option>
-                <option value="time">Tiempo (auto)</option>
+                <option value="time">Time (auto)</option>
               </select>
             </div>
           </div>
 
           <div>
-            <label>Descripción</label>
+            <label>Description</label>
             <textarea
               id="taskDesc"
-              placeholder="Detalles, notas, lo que quieras..."
+              placeholder="Notes, details…"
             ></textarea>
           </div>
 
           <div id="manualGroup">
-            <label>Progreso manual</label>
+            <label>Manual progress</label>
             <div class="range-wrap">
               <input
                 type="range"
@@ -773,7 +773,7 @@
                 step="1"
                 value="0"
               />
-              <span id="manualValue" style="width: 40px; text-align: right"
+              <span id="manualValue" style="width: 44px; text-align: right"
                 >0%</span
               >
             </div>
@@ -782,16 +782,16 @@
           <div id="timeGroup" style="display: none">
             <div class="row">
               <div>
-                <label>Inicio</label>
+                <label>Start</label>
                 <input type="datetime-local" id="taskStart" />
               </div>
               <div>
-                <label>Fin</label>
+                <label>End</label>
                 <input type="datetime-local" id="taskEnd" />
               </div>
             </div>
-            <div style="color: var(--muted); font-size: 12px">
-              El progreso avanza automáticamente desde Inicio hasta Fin.
+            <div style="color: var(--muted); font-size: 14px">
+              Progress fills automatically from Start to End.
             </div>
           </div>
 
@@ -807,10 +807,10 @@
           </div>
 
           <div class="modal-actions" style="display: flex; gap: 10px">
-            <button class="btn secondary" id="deleteTaskBtn">Eliminar</button>
+            <button class="btn secondary" id="deleteTaskBtn">Delete</button>
             <span style="flex: 1"></span>
-            <button class="btn secondary" id="cancelEdit">Cancelar</button>
-            <button class="btn" id="saveTask">Guardar</button>
+            <button class="btn secondary" id="cancelEdit">Cancel</button>
+            <button class="btn" id="saveTask">Save</button>
           </div>
         </div>
       </div>
