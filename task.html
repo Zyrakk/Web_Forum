@@ -1,0 +1,1407 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <title>To‑Do Pulse — Lista con Progreso</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      :root {
+        --bg-1: #0b0f14;
+        --bg-2: #0a0c12;
+        --card: rgba(255, 255, 255, 0.08);
+        --card-2: rgba(255, 255, 255, 0.06);
+        --txt: rgba(255, 255, 255, 0.92);
+        --muted: rgba(255, 255, 255, 0.66);
+        --ring: rgba(255, 255, 255, 0.18);
+        --success: #4ade80;
+        --warning: #fbbf24;
+        --danger: #fb7185;
+        --glow: 0 0 30px rgba(0, 255, 209, 0.25),
+          0 0 80px rgba(0, 153, 255, 0.12);
+        --radius: 16px;
+        --shadow-1: 0 10px 40px rgba(0, 0, 0, 0.35);
+        --shadow-2: 0 6px 28px rgba(0, 0, 0, 0.45);
+        --drop-line: linear-gradient(
+          90deg,
+          rgba(0, 255, 209, 0.9),
+          rgba(0, 138, 255, 0.9),
+          rgba(168, 85, 247, 0.9)
+        );
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        margin: 0;
+        color: var(--txt);
+        background: radial-gradient(1200px 800px at 80% -20%, #1b2a2d, #0b0f14)
+            no-repeat,
+          radial-gradient(
+              900px 600px at -10% 100%,
+              #1a1030,
+              transparent
+            )
+            no-repeat,
+          linear-gradient(180deg, var(--bg-1), var(--bg-2));
+        font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto,
+          sans-serif;
+        overflow-x: hidden;
+      }
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background: radial-gradient(
+            circle at 25% 20%,
+            rgba(255, 255, 255, 0.08),
+            transparent 20%
+          ),
+          radial-gradient(
+            circle at 75% 0%,
+            rgba(0, 255, 209, 0.06),
+            transparent 28%
+          ),
+          radial-gradient(
+            circle at 80% 80%,
+            rgba(59, 130, 246, 0.05),
+            transparent 26%
+          );
+        pointer-events: none;
+        filter: blur(60px) saturate(1.2);
+      }
+      .noise {
+        position: fixed;
+        inset: 0;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' opacity='0.04' viewBox='0 0 200 200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'%3E%3C/feColorMatrix%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+        pointer-events: none;
+        mix-blend-mode: overlay;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 24px;
+      }
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        margin: 8px 0 22px 0;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+      .brand .logo {
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
+        background: conic-gradient(
+          from 140deg,
+          #00ffd1,
+          #008aff,
+          #a855f7,
+          #ffd54d,
+          #00ffd1
+        );
+        filter: saturate(1.2);
+        animation: spin-slow 9s linear infinite;
+        box-shadow: var(--glow);
+      }
+      @keyframes spin-slow {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      .brand h1 {
+        font-family: "Space Grotesk", Inter, sans-serif;
+        font-weight: 800;
+        letter-spacing: 0.2px;
+        font-size: clamp(22px, 4vw, 34px);
+        margin: 0;
+        background: linear-gradient(
+          90deg,
+          #e9f9ff 0%,
+          #99e7ff 50%,
+          #e6ccff 100%
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        text-shadow: 0 6px 32px rgba(0, 185, 255, 0.15);
+      }
+
+      .header-actions {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 14px;
+        border-radius: 999px;
+        background: linear-gradient(180deg, var(--card), var(--card-2));
+        border: 1px solid var(--ring);
+        box-shadow: var(--shadow-1);
+        font-size: 14px;
+        color: var(--muted);
+      }
+
+      .btn {
+        appearance: none;
+        border: 0;
+        color: #071219;
+        font-weight: 700;
+        border-radius: 12px;
+        padding: 12px 16px;
+        background: linear-gradient(90deg, #00ffd1, #008aff, #a855f7);
+        background-size: 200% 100%;
+        animation: sheen 8s ease-in-out infinite;
+        cursor: pointer;
+        box-shadow: 0 10px 30px rgba(0, 153, 255, 0.28);
+        transition: transform 0.2s ease, filter 0.2s ease;
+      }
+      .btn:hover {
+        transform: translateY(-1px) scale(1.01);
+        filter: saturate(1.1);
+      }
+      .btn.secondary {
+        color: var(--txt);
+        background: linear-gradient(180deg, var(--card), var(--card-2));
+        border: 1px solid var(--ring);
+        box-shadow: var(--shadow-1);
+      }
+      @keyframes sheen {
+        0%,
+        100% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 18px;
+      }
+      @media (max-width: 960px) {
+        .grid {
+          grid-template-columns: repeat(6, 1fr);
+        }
+      }
+      @media (max-width: 560px) {
+        .grid {
+          grid-template-columns: repeat(1, 1fr);
+          gap: 14px;
+        }
+      }
+
+      .card {
+        grid-column: span 4;
+        position: relative;
+        border-radius: var(--radius);
+        background: linear-gradient(180deg, var(--card), rgba(255, 255, 255, 0.04));
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        box-shadow: var(--shadow-2);
+        backdrop-filter: blur(8px);
+        overflow: hidden;
+        transform-style: preserve-3d;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+      }
+      .card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 16px 50px rgba(0, 0, 0, 0.55);
+      }
+      .card::before {
+        content: "";
+        position: absolute;
+        inset: -1px;
+        padding: 1px;
+        border-radius: inherit;
+        background: linear-gradient(
+          140deg,
+          rgba(0, 255, 209, 0.6),
+          rgba(0, 138, 255, 0.6),
+          rgba(168, 85, 247, 0.6),
+          rgba(255, 213, 77, 0.6)
+        );
+        -webkit-mask: linear-gradient(#000, #000) content-box,
+          linear-gradient(#000, #000);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        pointer-events: none;
+        filter: blur(10px) saturate(1.2);
+        opacity: 0.45;
+      }
+      .card .inner {
+        position: relative;
+        padding: 18px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        z-index: 1;
+      }
+      .card .top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+      .title {
+        font-weight: 800;
+        letter-spacing: 0.2px;
+        font-size: 18px;
+      }
+      .desc {
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.5;
+      }
+      .meta {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .chip {
+        font-size: 12px;
+        color: #0a1419;
+        font-weight: 800;
+        letter-spacing: 0.25px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: linear-gradient(
+          90deg,
+          rgba(0, 255, 209, 0.9),
+          rgba(0, 138, 255, 0.9)
+        );
+        box-shadow: 0 6px 22px rgba(0, 153, 255, 0.25);
+      }
+      .chip.manual {
+        background: linear-gradient(
+          90deg,
+          rgba(255, 213, 77, 0.95),
+          rgba(168, 85, 247, 0.95)
+        );
+        color: #1a1200;
+        box-shadow: 0 6px 22px rgba(255, 213, 77, 0.28);
+      }
+      .chip.done {
+        background: linear-gradient(90deg, #a7f3d0, #34d399);
+        color: #052012;
+        box-shadow: 0 6px 22px rgba(52, 211, 153, 0.28);
+      }
+
+      .drag-handle {
+        display: none;
+        align-items: center;
+        gap: 6px;
+        color: var(--muted);
+        font-size: 12px;
+        padding: 4px 8px;
+        border: 1px dashed var(--ring);
+        border-radius: 8px;
+        cursor: grab;
+        user-select: none;
+      }
+      .admin-on .drag-handle {
+        display: inline-flex;
+      }
+      .dragging {
+        opacity: 0.7;
+        transform: translateY(-2px) scale(0.995);
+      }
+      .card.drop-before::after,
+      .card.drop-after::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: var(--drop-line);
+        box-shadow: 0 8px 26px rgba(0, 153, 255, 0.35);
+      }
+      .card.drop-before::after {
+        top: 0;
+      }
+      .card.drop-after::after {
+        bottom: 0;
+      }
+
+      .progress {
+        position: relative;
+        height: 14px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        overflow: hidden;
+      }
+      .progress-fill {
+        position: absolute;
+        inset: 0;
+        width: var(--w, 0%);
+        background: linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.35),
+            rgba(255, 255, 255, 0) 25%
+          )
+          no-repeat;
+        background-size: 160px 100%;
+        animation: shine 2.4s linear infinite;
+        box-shadow: 0 6px 26px rgba(0, 255, 209, 0.35),
+          0 0 24px rgba(0, 138, 255, 0.25);
+        transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+          background 0.3s ease, filter 0.3s ease;
+      }
+      @keyframes shine {
+        from {
+          background-position: -200px 0;
+        }
+        to {
+          background-position: 200px 0;
+        }
+      }
+      .progress-fill::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          90deg,
+          var(--c1, #00ffd1),
+          var(--c2, #008aff)
+        );
+        mix-blend-mode: screen;
+        opacity: 0.9;
+      }
+
+      .progress-labels {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 12px;
+        color: var(--muted);
+        margin-top: 6px;
+      }
+
+      .card-actions {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 8px;
+      }
+      .icon-btn {
+        border: 1px solid var(--ring);
+        background: linear-gradient(180deg, var(--card), var(--card-2));
+        color: var(--txt);
+        border-radius: 10px;
+        padding: 8px 10px;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        transition: transform 0.2s ease, background 0.2s ease;
+      }
+      .icon-btn:hover {
+        transform: translateY(-1px);
+      }
+      .icon {
+        width: 16px;
+        height: 16px;
+        opacity: 0.9;
+      }
+
+      .fab {
+        position: fixed;
+        right: 20px;
+        bottom: 20px;
+        z-index: 50;
+        transform: translateZ(0);
+      }
+      .fab button {
+        border-radius: 16px;
+        padding: 14px 16px;
+        font-weight: 800;
+        border: 0;
+        color: #061116;
+        background: linear-gradient(90deg, #00ffd1, #008aff, #a855f7);
+        background-size: 200% 100%;
+        animation: sheen 8s ease-in-out infinite;
+        box-shadow: 0 10px 30px rgba(0, 153, 255, 0.28),
+          0 0 100px rgba(0, 255, 209, 0.25);
+        cursor: pointer;
+      }
+      .fab .hint {
+        color: var(--muted);
+        font-size: 12px;
+        margin-top: 6px;
+        text-align: right;
+      }
+
+      .modal {
+        position: fixed;
+        inset: 0;
+        background: rgba(5, 10, 15, 0.6);
+        backdrop-filter: blur(14px) saturate(1.2);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        z-index: 100;
+      }
+      .modal.show {
+        display: flex;
+      }
+      .modal-card {
+        width: 100%;
+        max-width: 560px;
+        background: linear-gradient(
+          180deg,
+          var(--card),
+          rgba(255, 255, 255, 0.06)
+        );
+        border: 1px solid var(--ring);
+        border-radius: 18px;
+        box-shadow: var(--shadow-2);
+        padding: 18px;
+      }
+      .modal-card h3 {
+        margin: 0 0 12px 0;
+        font-family: "Space Grotesk", Inter, sans-serif;
+        font-size: 22px;
+      }
+      .form {
+        display: grid;
+        gap: 12px;
+      }
+      .row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+      @media (max-width: 560px) {
+        .row {
+          grid-template-columns: 1fr;
+        }
+      }
+      label {
+        font-size: 12px;
+        color: var(--muted);
+        margin-bottom: 6px;
+        display: block;
+      }
+      input[type="text"],
+      input[type="datetime-local"],
+      input[type="number"],
+      textarea,
+      select {
+        width: 100%;
+        padding: 12px 12px;
+        border-radius: 12px;
+        border: 1px solid var(--ring);
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.08),
+          transparent
+        );
+        color: var(--txt);
+        box-shadow: inset 0 -12px 24px rgba(0, 0, 0, 0.15);
+        outline: none;
+        transition: border 0.2s ease, box-shadow 0.2s ease;
+      }
+      textarea {
+        min-height: 90px;
+        resize: vertical;
+      }
+      input:focus,
+      textarea:focus,
+      select:focus {
+        border-color: rgba(0, 153, 255, 0.65);
+        box-shadow: 0 0 0 4px rgba(0, 153, 255, 0.15);
+      }
+      .range-wrap {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      input[type="range"] {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 100%;
+        height: 10px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 999px;
+        outline: none;
+        border: 1px solid var(--ring);
+      }
+      input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        background: linear-gradient(90deg, #00ffd1, #008aff);
+        box-shadow: 0 6px 22px rgba(0, 153, 255, 0.38);
+        border: 0;
+        cursor: pointer;
+      }
+
+      .countdown {
+        font-variant-numeric: tabular-nums;
+        font-size: 12px;
+        color: var(--muted);
+      }
+
+      .admin-only {
+        display: none;
+      }
+      .admin-on .admin-only {
+        display: inline-flex;
+      }
+
+      .toast {
+        position: fixed;
+        left: 50%;
+        bottom: 18px;
+        transform: translateX(-50%);
+        background: linear-gradient(180deg, var(--card), var(--card-2));
+        border: 1px solid var(--ring);
+        padding: 12px 16px;
+        border-radius: 12px;
+        box-shadow: var(--shadow-1);
+        font-size: 14px;
+        display: none;
+        z-index: 120;
+      }
+      .toast.show {
+        display: block;
+      }
+
+      /* Confetti canvas overlay */
+      #confettiCanvas {
+        position: fixed;
+        inset: 0;
+        width: 100vw;
+        height: 100vh;
+        pointer-events: none;
+        z-index: 200;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="noise" aria-hidden="true"></div>
+
+    <canvas id="confettiCanvas"></canvas>
+
+    <div class="container" id="app">
+      <header>
+        <div class="brand">
+          <div class="logo" aria-hidden="true"></div>
+          <h1>To‑Do Pulse</h1>
+        </div>
+
+        <div class="header-actions">
+          <span class="pill" id="legend">
+            <svg
+              class="icon"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+                d="M12 6v6l4 2"
+              />
+            </svg>
+            Tiempo = progreso auto • Manual = lo pones tú
+          </span>
+
+          <a class="btn secondary" id="adminLink" href="/admin/task.html">
+            Entrar Admin
+          </a>
+          <a class="btn secondary admin-only" id="viewerLink" href="/task.html">
+            Salir Admin
+          </a>
+        </div>
+      </header>
+
+      <div class="grid" id="taskGrid"></div>
+
+      <div class="fab admin-only">
+        <button id="addTaskBtn">+ Nueva tarea</button>
+        <div class="hint">Editas aquí (ruta admin protegida)</div>
+      </div>
+    </div>
+
+    <!-- Modal Editor -->
+    <div class="modal" id="editModal" aria-hidden="true">
+      <div class="modal-card" role="dialog" aria-modal="true">
+        <h3 id="editorTitle">Crear / Editar tarea</h3>
+        <div class="form">
+          <div class="row">
+            <div>
+              <label>Título</label>
+              <input type="text" id="taskTitle" placeholder="Ej: Landing" />
+            </div>
+            <div>
+              <label>Modo de progreso</label>
+              <select id="taskMode">
+                <option value="manual">Manual</option>
+                <option value="time">Tiempo (auto)</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label>Descripción</label>
+            <textarea
+              id="taskDesc"
+              placeholder="Detalles, notas, lo que quieras..."
+            ></textarea>
+          </div>
+
+          <div id="manualGroup">
+            <label>Progreso manual</label>
+            <div class="range-wrap">
+              <input
+                type="range"
+                id="taskPercent"
+                min="0"
+                max="100"
+                step="1"
+                value="0"
+              />
+              <span id="manualValue" style="width: 40px; text-align: right"
+                >0%</span
+              >
+            </div>
+          </div>
+
+          <div id="timeGroup" style="display: none">
+            <div class="row">
+              <div>
+                <label>Inicio</label>
+                <input type="datetime-local" id="taskStart" />
+              </div>
+              <div>
+                <label>Fin</label>
+                <input type="datetime-local" id="taskEnd" />
+              </div>
+            </div>
+            <div style="color: var(--muted); font-size: 12px">
+              El progreso avanza automáticamente desde Inicio hasta Fin.
+            </div>
+          </div>
+
+          <div class="row">
+            <div>
+              <label>Color 1</label>
+              <input type="text" id="taskColor1" value="#00ffd1" />
+            </div>
+            <div>
+              <label>Color 2</label>
+              <input type="text" id="taskColor2" value="#008aff" />
+            </div>
+          </div>
+
+          <div class="modal-actions" style="display: flex; gap: 10px">
+            <button class="btn secondary" id="deleteTaskBtn">Eliminar</button>
+            <span style="flex: 1"></span>
+            <button class="btn secondary" id="cancelEdit">Cancelar</button>
+            <button class="btn" id="saveTask">Guardar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <script>
+      /* ===============================
+       *  To‑Do Pulse — Static SPA (Admin via /admin/)
+       *  - Sin password en front. /admin/task.html va con Basic Auth NGINX
+       *  - Tareas en localStorage (por navegador)
+       *  - Progreso: manual o por tiempo
+       *  - Drag & Drop reordenar (solo Admin)
+       *  - Confeti al completar 100%
+       * =============================== */
+
+      const STORAGE_KEY = "todoPulse.tasks.v2";
+
+      const ADMIN_MODE = location.pathname.startsWith("/admin");
+      const isAdmin = () => ADMIN_MODE;
+
+      let tasks = [];
+      let editingId = null;
+      let draggingId = null;
+
+      const els = {
+        grid: document.getElementById("taskGrid"),
+        editModal: document.getElementById("editModal"),
+        editorTitle: document.getElementById("editorTitle"),
+        title: document.getElementById("taskTitle"),
+        desc: document.getElementById("taskDesc"),
+        mode: document.getElementById("taskMode"),
+        manualGroup: document.getElementById("manualGroup"),
+        timeGroup: document.getElementById("timeGroup"),
+        percent: document.getElementById("taskPercent"),
+        manualValue: document.getElementById("manualValue"),
+        start: document.getElementById("taskStart"),
+        end: document.getElementById("taskEnd"),
+        c1: document.getElementById("taskColor1"),
+        c2: document.getElementById("taskColor2"),
+        saveTask: document.getElementById("saveTask"),
+        cancelEdit: document.getElementById("cancelEdit"),
+        deleteTask: document.getElementById("deleteTaskBtn"),
+        addTaskBtn: document.getElementById("addTaskBtn"),
+        toast: document.getElementById("toast"),
+        app: document.getElementById("app"),
+        confetti: document.getElementById("confettiCanvas"),
+      };
+
+      const fmtPct = (n) => `${Math.round(n)}%`;
+      const clamp = (n, a, b) => Math.max(a, Math.min(b, n));
+      const now = () => new Date().getTime();
+      const uid = () =>
+        Math.random().toString(36).slice(2) + Date.now().toString(36);
+
+      const saveLocal = () =>
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
+      const loadLocal = () => {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return null;
+        try {
+          return JSON.parse(raw);
+        } catch {
+          return null;
+        }
+      };
+
+      const showToast = (msg) => {
+        els.toast.textContent = msg;
+        els.toast.classList.add("show");
+        setTimeout(() => els.toast.classList.remove("show"), 1800);
+      };
+
+      const ensureDemoTasks = () => {
+        const demo = [
+          {
+            id: uid(),
+            title: "Lanzamiento de Landing",
+            desc:
+              "Página hero, secciones, formulario. Monitorear métricas de " +
+              "interacción.",
+            mode: "time",
+            percent: 0,
+            start: new Date(
+              Date.now() - 1000 * 60 * 60 * 12
+            ).toISOString(),
+            end: new Date(
+              Date.now() + 1000 * 60 * 60 * 24 * 2
+            ).toISOString(),
+            c1: "#00ffd1",
+            c2: "#008aff",
+            createdAt: now(),
+            updatedAt: now(),
+            celebrated: false,
+          },
+          {
+            id: uid(),
+            title: "Diseñar logotipo",
+            desc:
+              "Exploración tipográfica, símbolo, versiones para oscuro/claro.",
+            mode: "manual",
+            percent: 42,
+            start: null,
+            end: null,
+            c1: "#ffd54d",
+            c2: "#a855f7",
+            createdAt: now(),
+            updatedAt: now(),
+            celebrated: false,
+          },
+          {
+            id: uid(),
+            title: "Integrar Analytics",
+            desc: "Eventos clave, funnels, heatmaps y dashboard.",
+            mode: "manual",
+            percent: 15,
+            start: null,
+            end: null,
+            c1: "#34d399",
+            c2: "#10b981",
+            createdAt: now(),
+            updatedAt: now(),
+            celebrated: false,
+          },
+        ];
+        tasks = demo;
+        saveLocal();
+      };
+
+      const computePct = (t) => {
+        if (t.mode !== "time") return clamp(t.percent ?? 0, 0, 100);
+        if (!t.start || !t.end) return 0;
+        const s = new Date(t.start).getTime();
+        const e = new Date(t.end).getTime();
+        const n = now();
+        if (e <= s) return 100;
+        const p = ((n - s) / (e - s)) * 100;
+        return clamp(p, 0, 100);
+      };
+
+      const fmtCountdown = (t) => {
+        const s = t.start ? new Date(t.start).getTime() : null;
+        const e = t.end ? new Date(t.end).getTime() : null;
+        const n = now();
+        if (t.mode !== "time" || !s || !e) return "";
+        if (n < s) {
+          const ms = s - n;
+          return "Empieza en " + humanize(ms);
+        }
+        if (n >= e) return "Finalizado";
+        const ms = e - n;
+        return "Termina en " + humanize(ms);
+      };
+
+      const humanize = (ms) => {
+        const sec = Math.floor(ms / 1000);
+        const d = Math.floor(sec / 86400);
+        const h = Math.floor((sec % 86400) / 3600);
+        const m = Math.floor((sec % 3600) / 60);
+        const s = sec % 60;
+        const parts = [];
+        if (d) parts.push(d + "d");
+        if (h) parts.push(h + "h");
+        if (m) parts.push(m + "m");
+        parts.push(s + "s");
+        return parts.join(" ");
+      };
+
+      const escapeHtml = (s) =>
+        (s || "")
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#039;");
+
+      function icon(name) {
+        if (name === "edit")
+          return `<svg class="icon" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor"><path stroke-linecap="round"
+            stroke-linejoin="round" stroke-width="1.5"
+            d="M16.862 4.487l1.687-1.688a2.25 2.25 0 113.182 3.183L7.5
+            20.313 3 21l.688-4.5L16.862 4.487z"/></svg>`;
+        if (name === "trash")
+          return `<svg class="icon" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor"><path stroke-linecap="round"
+            stroke-linejoin="round" stroke-width="1.5"
+            d="M19.5 7.5l-.867 12.142A2.25 2.25 0 0116.39 22H7.61a2.25
+            2.25 0 01-2.243-2.358L4.5 7.5m3 0V5.25A2.25 2.25 0 019.75 3h4.5A2.25
+            2.25 0 0116.5 5.25V7.5m-9 0h11.25M9.75 11.25v6m4.5-6v6"/></svg>`;
+        if (name === "grip")
+          return `<svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+            <circle cx="8" cy="7" r="1.5"/><circle cx="8" cy="12" r="1.5"/>
+            <circle cx="8" cy="17" r="1.5"/><circle cx="16" cy="7" r="1.5"/>
+            <circle cx="16" cy="12" r="1.5"/><circle cx="16" cy="17" r="1.5"/>
+          </svg>`;
+        return "";
+      }
+
+      function maybeCelebrate(t, pct) {
+        if (!t) return;
+        if (!t.celebrated && pct >= 100) {
+          t.celebrated = true;
+          saveLocal();
+          Confetti.celebrate();
+          showToast("¡Tarea completada!");
+        }
+      }
+
+      function render() {
+        const admin = isAdmin();
+        document.body.classList.toggle("admin-on", admin);
+
+        if (!tasks.length) {
+          els.grid.innerHTML = `
+            <div class="card" style="grid-column: span 12">
+              <div class="inner">
+                <div class="top">
+                  <div class="title">Sin tareas aún</div>
+                </div>
+                <div class="desc">
+                  Entra a /admin/task.html para crear la primera (requiere login).
+                </div>
+              </div>
+            </div>`;
+          return;
+        }
+
+        const html = tasks
+          .map((t) => {
+            const pct = computePct(t);
+            const done = pct >= 100;
+            const modeChip =
+              t.mode === "time"
+                ? `<span class="chip">Tiempo</span>`
+                : `<span class="chip manual">Manual</span>`;
+            const countdown = fmtCountdown(t);
+            const cdHtml = countdown
+              ? `<div class="countdown">${countdown}</div>`
+              : "";
+
+            return `
+              <div class="card" data-id="${t.id}" ${
+              admin ? 'draggable="true"' : ""
+            }>
+                <div class="inner">
+                  <div class="top">
+                    <div class="title">${escapeHtml(t.title)}</div>
+                    <div class="meta">
+                      ${
+                        admin
+                          ? `<span class="drag-handle">${icon(
+                              "grip"
+                            )} Mover</span>`
+                          : ""
+                      }
+                      ${modeChip}
+                      ${
+                        done
+                          ? `<span class="chip done">¡Completado!</span>`
+                          : ""
+                      }
+                    </div>
+                  </div>
+
+                  <div class="desc">${escapeHtml(t.desc || "")}</div>
+
+                  <div class="progress" title="${Math.round(pct)}%">
+                    <div class="progress-fill"
+                         style="--w:${pct}%;--c1:${t.c1};--c2:${t.c2}"></div>
+                  </div>
+                  <div class="progress-labels">
+                    <span>Progreso</span>
+                    <span>${fmtPct(pct)}</span>
+                  </div>
+
+                  ${cdHtml}
+
+                  <div class="card-actions ${admin ? "admin-only" : ""}">
+                    <button class="icon-btn" data-action="edit">
+                      ${icon("edit")} Editar
+                    </button>
+                    <button class="icon-btn" data-action="delete">
+                      ${icon("trash")} Borrar
+                    </button>
+                  </div>
+                </div>
+              </div>`;
+          })
+          .join("");
+
+        els.grid.innerHTML = html;
+
+        // Interacciones por tarjeta
+        els.grid.querySelectorAll(".card").forEach((card) => {
+          // Tilt visual
+          card.addEventListener("mousemove", tiltCard);
+          card.addEventListener("mouseleave", resetTilt);
+
+          const id = card.getAttribute("data-id");
+          card.querySelectorAll("[data-action]").forEach((btn) =>
+            btn.addEventListener("click", () =>
+              handleCardAction(id, btn.getAttribute("data-action"))
+            )
+          );
+
+          if (isAdmin()) {
+            // Drag & Drop reordenar
+            card.addEventListener("dragstart", (e) => onDragStart(e, id));
+            card.addEventListener("dragover", (e) => onDragOver(e, card));
+            card.addEventListener("dragleave", () => {
+              card.classList.remove("drop-before", "drop-after");
+            });
+            card.addEventListener("drop", (e) => onDrop(e, id, card));
+            card.addEventListener("dragend", () => {
+              card.classList.remove("dragging");
+              draggingId = null;
+            });
+          }
+        });
+      }
+
+      function onDragStart(e, id) {
+        draggingId = id;
+        e.dataTransfer.effectAllowed = "move";
+        e.dataTransfer.setData("text/plain", id);
+        const card = e.currentTarget;
+        card.classList.add("dragging");
+      }
+      function onDragOver(e, card) {
+        e.preventDefault();
+        if (!draggingId) return;
+        const rect = card.getBoundingClientRect();
+        const y = e.clientY - rect.top;
+        const half = rect.height / 2;
+        card.classList.toggle("drop-before", y < half);
+        card.classList.toggle("drop-after", y >= half);
+      }
+      function onDrop(e, targetId, card) {
+        e.preventDefault();
+        card.classList.remove("drop-before", "drop-after");
+        const fromId = draggingId || e.dataTransfer.getData("text/plain");
+        if (!fromId || fromId === targetId) return;
+
+        const fromIndex = tasks.findIndex((t) => t.id === fromId);
+        const toIndex = tasks.findIndex((t) => t.id === targetId);
+        if (fromIndex === -1 || toIndex === -1) return;
+
+        const rect = card.getBoundingClientRect();
+        const insertBefore = e.clientY - rect.top < rect.height / 2;
+
+        const [moved] = tasks.splice(fromIndex, 1);
+        let newIndex = toIndex;
+        if (!insertBefore) newIndex = toIndex + (fromIndex < toIndex ? 0 : 1);
+        if (insertBefore) newIndex = toIndex + (fromIndex < toIndex ? -1 : 0);
+        newIndex = clamp(newIndex, 0, tasks.length);
+
+        tasks.splice(newIndex, 0, moved);
+        saveLocal();
+        render();
+        showToast("Orden guardado");
+      }
+
+      function tiltCard(e) {
+        const el = e.currentTarget;
+        const rect = el.getBoundingClientRect();
+        const px = (e.clientX - rect.left) / rect.width;
+        const py = (e.clientY - rect.top) / rect.height;
+        const rx = (py - 0.5) * 8;
+        const ry = (px - 0.5) * -12;
+        el.style.transform = `translateY(-4px) rotateX(${rx}deg) rotateY(${ry}deg)`;
+      }
+      function resetTilt(e) {
+        e.currentTarget.style.transform = "";
+      }
+
+      // Editor
+      function openEditor(task = null) {
+        if (!isAdmin()) {
+          showToast("Solo admin puede editar");
+          return;
+        }
+        editingId = task ? task.id : null;
+
+        els.editorTitle.textContent = task ? "Editar tarea" : "Nueva tarea";
+        els.title.value = task ? task.title : "";
+        els.desc.value = task ? task.desc : "";
+        els.mode.value = task ? task.mode : "manual";
+        els.percent.value = task ? Math.round(task.percent || 0) : 0;
+        els.manualValue.textContent = fmtPct(els.percent.value);
+        els.start.value = task && task.start ? toLocalInput(task.start) : "";
+        els.end.value = task && task.end ? toLocalInput(task.end) : "";
+        els.c1.value = task ? task.c1 : "#00ffd1";
+        els.c2.value = task ? task.c2 : "#008aff";
+
+        els.manualGroup.style.display =
+          (task ? task.mode : "manual") === "manual" ? "block" : "none";
+        els.timeGroup.style.display =
+          (task ? task.mode : "manual") === "time" ? "block" : "none";
+
+        toggleModal(els.editModal, true);
+      }
+
+      function handleCardAction(id, action) {
+        if (!isAdmin()) {
+          showToast("Solo admin puede editar");
+          return;
+        }
+        if (action === "edit") {
+          const t = tasks.find((x) => x.id === id);
+          if (!t) return;
+          openEditor(t);
+        } else if (action === "delete") {
+          const t = tasks.find((x) => x.id === id);
+          if (!t) return;
+          if (confirm("¿Eliminar esta tarea?")) {
+            tasks = tasks.filter((x) => x.id !== id);
+            saveLocal();
+            showToast("Tarea eliminada");
+            render();
+          }
+        }
+      }
+
+      function toLocalInput(iso) {
+        const d = new Date(iso);
+        const pad = (n) => String(n).padStart(2, "0");
+        const yyyy = d.getFullYear();
+        const mm = pad(d.getMonth() + 1);
+        const dd = pad(d.getDate());
+        const hh = pad(d.getHours());
+        const mi = pad(d.getMinutes());
+        return `${yyyy}-${mm}-${dd}T${hh}:${mi}`;
+      }
+
+      function saveEditor() {
+        const title = els.title.value.trim();
+        const desc = els.desc.value.trim();
+        const mode = els.mode.value;
+        const percent = clamp(parseInt(els.percent.value || "0", 10), 0, 100);
+        const c1 = els.c1.value.trim() || "#00ffd1";
+        const c2 = els.c2.value.trim() || "#008aff";
+
+        let start = null,
+          end = null;
+        if (mode === "time") {
+          const s = els.start.value ? new Date(els.start.value) : null;
+          const e = els.end.value ? new Date(els.end.value) : null;
+          if (!s || !e || isNaN(s) || isNaN(e)) {
+            showToast("Define Inicio y Fin para modo Tiempo");
+            return;
+          }
+          start = s.toISOString();
+          end = e.toISOString();
+        }
+
+        if (!title) {
+          showToast("Pon un título");
+          return;
+        }
+
+        if (editingId) {
+          const t = tasks.find((x) => x.id === editingId);
+          if (!t) return;
+          const prevPct = computePct(t);
+
+          t.title = title;
+          t.desc = desc;
+          t.mode = mode;
+          t.percent = mode === "manual" ? percent : t.percent || 0;
+          t.start = mode === "time" ? start : null;
+          t.end = mode === "time" ? end : null;
+          t.c1 = c1;
+          t.c2 = c2;
+          t.updatedAt = now();
+
+          const newPct = computePct(t);
+          if (newPct >= 100 && prevPct < 100) {
+            maybeCelebrate(t, newPct);
+          }
+        } else {
+          const newTask = {
+            id: uid(),
+            title,
+            desc,
+            mode,
+            percent: mode === "manual" ? percent : 0,
+            start: mode === "time" ? start : null,
+            end: mode === "time" ? end : null,
+            c1,
+            c2,
+            createdAt: now(),
+            updatedAt: now(),
+            celebrated: false,
+          };
+          tasks.unshift(newTask);
+          const p = computePct(newTask);
+          if (p >= 100) maybeCelebrate(newTask, p);
+        }
+
+        saveLocal();
+        toggleModal(els.editModal, false);
+        showToast("Guardado");
+        render();
+      }
+
+      function toggleModal(modal, show) {
+        modal.classList.toggle("show", !!show);
+      }
+
+      // Confetti
+      const Confetti = (() => {
+        const canvas = els.confetti;
+        const ctx = canvas.getContext("2d");
+        const colors = [
+          "#00ffd1",
+          "#008aff",
+          "#a855f7",
+          "#ffd54d",
+          "#34d399",
+          "#fb7185",
+        ];
+        let W = 0,
+          H = 0;
+        let particles = [];
+        let raf = null;
+
+        const resize = () => {
+          W = canvas.width = window.innerWidth;
+          H = canvas.height = window.innerHeight;
+        };
+        window.addEventListener("resize", resize);
+        resize();
+
+        function spawnBurst(x = W / 2, y = H / 3, n = 180) {
+          for (let i = 0; i < n; i++) {
+            const angle = (Math.random() * Math.PI * 2) % (Math.PI * 2);
+            const speed = 3 + Math.random() * 6;
+            particles.push({
+              x,
+              y,
+              vx: Math.cos(angle) * speed,
+              vy: Math.sin(angle) * speed - 4,
+              g: 0.12 + Math.random() * 0.12,
+              s: 6 + Math.random() * 6,
+              r: Math.random() * Math.PI,
+              vr: (Math.random() - 0.5) * 0.2,
+              c: colors[(Math.random() * colors.length) | 0],
+              life: 80 + (Math.random() * 60) | 0,
+            });
+          }
+        }
+
+        function tick() {
+          ctx.clearRect(0, 0, W, H);
+          if (!particles.length) {
+            raf = null;
+            return;
+          }
+          particles.forEach((p) => {
+            p.vy += p.g;
+            p.x += p.vx;
+            p.y += p.vy;
+            p.r += p.vr;
+            p.life--;
+          });
+          particles = particles.filter((p) => p.life > 0 && p.y < H + 40);
+
+          particles.forEach((p) => {
+            ctx.save();
+            ctx.translate(p.x, p.y);
+            ctx.rotate(p.r);
+            ctx.fillStyle = p.c;
+            const w = p.s * (0.8 + Math.random() * 0.4);
+            const h = p.s * (0.4 + Math.random() * 0.6);
+            ctx.fillRect(-w / 2, -h / 2, w, h);
+            ctx.restore();
+          });
+
+          raf = requestAnimationFrame(tick);
+        }
+
+        return {
+          celebrate() {
+            spawnBurst(W / 2, H / 3, 220);
+            spawnBurst(W / 2, H / 3, 100);
+            if (!raf) raf = requestAnimationFrame(tick);
+          },
+        };
+      })();
+
+      // Bucle para modo tiempo + confeti al llegar a 100
+      setInterval(() => {
+        let changed = false;
+        tasks.forEach((t) => {
+          const p = computePct(t);
+          if (t.mode === "time") {
+            if (Math.round(p) !== Math.round(t.percent || 0)) {
+              t.percent = p;
+              changed = true;
+            }
+            if (p >= 100) maybeCelebrate(t, p);
+          }
+        });
+        if (changed) {
+          saveLocal();
+          document.querySelectorAll(".card").forEach((card) => {
+            const id = card.getAttribute("data-id");
+            const t = tasks.find((x) => x.id === id);
+            if (!t) return;
+            const fill = card.querySelector(".progress-fill");
+            const labels = card.querySelector(
+              ".progress-labels span:last-child"
+            );
+            if (fill) fill.style.setProperty("--w", computePct(t) + "%");
+            if (labels) labels.textContent = fmtPct(computePct(t));
+            const cd = card.querySelector(".countdown");
+            if (cd) cd.textContent = fmtCountdown(t);
+          });
+        }
+      }, 1000);
+
+      // Eventos UI
+      els.addTaskBtn.addEventListener("click", () => openEditor());
+      els.mode.addEventListener("change", () => {
+        const m = els.mode.value;
+        els.manualGroup.style.display = m === "manual" ? "block" : "none";
+        els.timeGroup.style.display = m === "time" ? "block" : "none";
+      });
+      els.percent.addEventListener("input", () => {
+        els.manualValue.textContent = fmtPct(els.percent.value);
+      });
+      els.cancelEdit.addEventListener("click", () =>
+        toggleModal(els.editModal, false)
+      );
+      els.saveTask.addEventListener("click", saveEditor);
+      els.deleteTask.addEventListener("click", () => {
+        if (!editingId) return toggleModal(els.editModal, false);
+        const t = tasks.find((x) => x.id === editingId);
+        if (!t) return toggleModal(els.editModal, false);
+        if (confirm("¿Eliminar esta tarea?")) {
+          tasks = tasks.filter((x) => x.id !== editingId);
+          saveLocal();
+          toggleModal(els.editModal, false);
+          showToast("Tarea eliminada");
+          render();
+        }
+      });
+
+      [els.editModal].forEach((modal) => {
+        modal.addEventListener("click", (e) => {
+          if (e.target === modal) toggleModal(modal, false);
+        });
+      });
+      window.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") toggleModal(els.editModal, false);
+      });
+
+      (function init() {
+        const saved = loadLocal();
+        if (saved && Array.isArray(saved)) {
+          // Migrar si falta la bandera celebrated
+          tasks = saved.map((t) => ({ celebrated: false, ...t }));
+        } else {
+          ensureDemoTasks();
+        }
+        render();
+      })();
+    </script>
+  </body>
+</html>
